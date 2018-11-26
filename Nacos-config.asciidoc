@@ -1,5 +1,9 @@
 = Spring Cloud Alibaba Nacos Config
 
+Nacos 提供用于存储配置和其他元数据的 key/value 存储，为分布式系统中的外部化配置提供服务器端和客户端支持。使用 Spring Cloud Alibaba Nacos Config，您可以在 Nacos Server 集中管理你 Spring Cloud 应用的外部属性配置。
+
+Spring Cloud Alibaba Nacos Config 是 Config Server 和 Client 的替代方案，客户端和服务器上的概念与 Spring Environment 和 PropertySource 有着一致的抽象，在特殊的 bootstrap 阶段，配置被加载到 Spring 环境中。当应用程序通过部署管道从开发到测试再到生产时，您可以管理这些环境之间的配置，并确保应用程序具有迁移时需要运行的所有内容。
+
 == 快速开始
 
 === 基于 dataid 为 properties 的文件扩展名配置方式
@@ -8,7 +12,13 @@
 
 1、启动Nacos Server。启动方式可见 https://nacos.io/zh-cn/docs/quick-start.html[Nacos 官网]
 
-2、启动好Nacos之后，在Nacos添加如下的配置。注意dataid是以 properties为扩展名，默认的文件扩展名方式。如下所示：
+2、启动好 Nacos 之后，在 Nacos 添加如下的配置。
+
+    存储在 Nacos 中数据的 key 格式的格式为  `${prefix} - ${spring.active.profile} . ${file-extension}`
+
+NOTE: `prefix` 默认从配置 `spring.application.name` 中取值，`file-extension` 默认的值为 "properties"
+
+NOTE: 当 profile 未配置时，key 的格式为 `${prefix}`.`${file-extension}`
 
 [source,subs="normal"]
 ----
@@ -24,7 +34,7 @@ Group  :    DEFAULT_GROUP
 
 ==== 客户端使用方式
 
-为了能够在应用程序中使用Nacos作为Sping Cloud Config的后端存储服务，在您构建Spring Boot 应用的同时添加一个Spring Boot Starter org.springframework.cloud:spring-cloud-starter-alibaba-nacos-config。以下是一个基础的maven 依赖配置:
+为了能够在应用程序中使用 Nacos 作为 Sping Cloud Config 的后端存储服务，在您构建 Spring Boot 应用的同时添加一个 Spring Cloud Starter。  group 为 `org.springframework.cloud` ， artifact id 为 `spring-cloud-starter-alibaba-nacos-config`。详细的版本对应关系请参考 https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E[版本说明]。以下是一个基础的 maven 依赖配置:
 
 [source,xml]
 ----
@@ -75,7 +85,7 @@ Group  :    DEFAULT_GROUP
 </build>
 ----
 
-现在就可以创建一个标准的Spring Boot的应用。
+现在就可以创建一个标准的 Spring Boot 的应用。
 
 [source,java]
 ----
@@ -91,7 +101,7 @@ public class ProviderApplication {
 }
 ----
 
-spring-cloud-starter-alibaba-nacos-config 对于 Nacos 服务端的基础配置没有默认值，因此在运行此Example 之前， 必须使用 bootstrap.properties 配置文件来配置Nacos Server地址，例如：
+spring-cloud-starter-alibaba-nacos-config 对于 Nacos 服务端的基础配置没有默认值，因此在运行此 Example 之前， 必须使用 bootstrap.properties 配置文件来配置 Nacos Config 的元信息，例如：
 
 .bootstrap.properties
 [source,properties]
