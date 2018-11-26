@@ -1,8 +1,5 @@
 Welcome to the spring-cloud-alibaba wiki!
 
-[[spring-cloud-alibaba-reference]]
-= Spring Cloud Alibaba 参考文档
-
 == 介绍
 
 Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。此项目包含开发分布式应用服务的必需组件，方便开发者通过 Spring Cloud 编程模型轻松使用这些组件来开发分布式应用服务。
@@ -11,17 +8,17 @@ Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。�
 
 include::版本说明[]
 
-include::nacos-discovery.adoc[]
+include::Nacos-discovery[]
 
-include::nacos-config.adoc[]
+include::Nacos-config[]
 
-include::sentinel.adoc[]
+include::Sentinel[]
 
-include::rocketmq.adoc[]
+include::RocketMQ[]
 
-include::ans.adoc[]
+include::ANS[]
 
-include::acm.adoc[]
+include::ACM[]
 
-include::oss.adoc[]
+include::OSS[]
 
