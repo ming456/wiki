@@ -15,7 +15,7 @@ Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。�
 
 依托 Spring Cloud Alibaba，您只需要添加一些注解和少量配置，就可以将 Spring Cloud 应用接入阿里分布式应用解决方案，通过阿里中间件来迅速搭建分布式应用系统。
 
-include::dependency-management.adoc[]
+include::版本说明.adoc[]
 
 include::nacos-discovery.adoc[]
 
