@@ -1,0 +1,89 @@
+== 依赖管理
+
+Spring Cloud Alibaba BOM 包含了它所使用的所有依赖的版本。
+
+=== RELEASE
+
+==== Spring Cloud Finchley
+
+如果需要使用 Spring Cloud Finchley 版本，请在 dependencyManagement 中添加如下内容
+
+[source,xml]
+----
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+            <version>0.2.0.RELEASE</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+----
+
+
+==== Spring Cloud Edgware
+
+如果需要使用 Spring Cloud Edgware 版本，请在 dependencyManagement 中添加如下内容
+
+[source,xml]
+----
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+            <version>0.1.0.RELEASE</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+----
+
+=== BUILD-SNAPSHOT
+
+如果您想使用最近的 SNAPSHOT 版本，首先需要在你的 maven 配置中加入 Spring BUILDSNAPSHOT 仓库，可以在 Maven 配置文件中的 settings.xml 或者 Java 工程的 pom.xml 中配置，
+
+
+
+[source,xml]
+----
+    <repositories>
+        <repository>
+            <id>spring-snapshot</id>
+            <name>Spring Snapshot Repository</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+----
+
+NOTE: 请注意， BUILD-SNAPSHOT 版本随时可能更新	
+
+==== Spring Cloud Finchley
+
+如果需要使用 Spring Cloud Finchley 版本，请在 dependencyManagement 中添加如下内容
+
+[source,xml]
+----
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+            <version>0.2.1.BUILD-SNAPSHOT</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+----
+
+
+==== Spring Cloud Edgware
+
+如果需要使用 Spring Cloud Edgware 版本，请在 dependencyManagement 中添加如下内容
+
+[source,xml]
+----
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+            <version>0.1.1.BUILD-SNAPSHOT</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+----
