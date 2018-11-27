@@ -177,7 +177,7 @@ NOTE: 你可以通过配置 spring.cloud.nacos.config.refresh.enabled=false 来�
 
 == 支持 profile 粒度的配置
 
-spring-cloud-starter-alibaba-nacos-config 在加载配置的时候，首先会尝试去加载 dataid 为${spring.application.name}.${file-extension}的配置，当设置了`spring.profiles.active` 中配置有内容时，还会尝试去加载了dataid 为${spring.application.name}-${profile}.${file-extension}的配置，且后者的优先级高于前者。
+spring-cloud-starter-alibaba-nacos-config 在加载配置的时候，首先会尝试去加载 dataid 为${spring.application.name}.${file-extension}的配置，当设置了 `spring.profiles.active` 中配置有内容时，还会尝试去加载了dataid 为${spring.application.name}-${profile}.${file-extension}的配置，且后者的优先级高于前者。
 
 spring.profiles.active 属于配置的元数据，所以也必须配置在 bootstrap.properties 或 bootstrap.yaml 中。
 
@@ -187,7 +187,7 @@ spring.profiles.active=develop
 ----
 NOTE: 也可以通过 JVM 参数 -Dspring.profiles.active=develop 或者 --spring.profiles.active=develop 这类优先级更高的方式来配置，遵循 Spring Boot 规范。
 
-在Nacos上新增了一个dataid为：nacos-config-develop.yaml的基础配置，如下所示：
+在Nacos上新增了一个 dataid 为：nacos-config-develop.yaml 的基础配置，如下所示：
 
 [source,subs="normal"]
 ----
