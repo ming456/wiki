@@ -2,7 +2,7 @@
 
 Spring Cloud Alibaba BOM 包含了它所使用的所有依赖的版本。
 
-=== RELEASE
+=== RELEASE 版本
 
 ==== Spring Cloud Finchley
 
@@ -35,7 +35,7 @@ Spring Cloud Alibaba BOM 包含了它所使用的所有依赖的版本。
         </dependency>
 ----
 
-=== BUILD-SNAPSHOT
+=== BUILD-SNAPSHOT 版本
 
 如果您想使用最近的 SNAPSHOT 版本，首先需要在你的 maven 配置中加入 Spring BUILDSNAPSHOT 仓库，可以在 Maven 配置文件中的 settings.xml 或者 Java 工程的 pom.xml 中配置，
 
