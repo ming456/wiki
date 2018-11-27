@@ -6,9 +6,8 @@ Spring Cloud Alibaba Nacos Config 是 Config Server 和 Client 的替代方案�
 
 == 快速开始
 
-=== 基于 dataid 为 properties 的文件扩展名配置方式
 
-==== Nacos 服务端初始化
+=== Nacos 服务端初始化
 
 1、启动Nacos Server。启动方式可见 https://nacos.io/zh-cn/docs/quick-start.html[Nacos 官网]
 
@@ -32,7 +31,7 @@ Group  :    DEFAULT_GROUP
             user.age: 90
 ----
 
-==== 客户端使用方式
+=== 客户端使用方式
 
 为了能够在应用程序中使用 Nacos 作为 Sping Cloud Config 的后端存储服务，在您构建 Spring Boot 应用的同时添加一个 Spring Cloud Starter。  group 为 `org.springframework.cloud` ， artifact id 为 `spring-cloud-starter-alibaba-nacos-config`。详细的版本对应关系请参考 https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E[版本说明]。以下是一个基础的 maven 依赖配置:
 
@@ -124,15 +123,15 @@ user name :nacos-config-properties; age: 90
 2018-11
 ----
 
-=== 基于 dataid 为 yaml 的文件扩展名配置方式
+== 更改配置文件扩展名
 
 spring-cloud-starter-alibaba-nacos-config 默认对 dateid 的文件扩展名是 properties。如果习惯使用yaml格式来作为应用中的基础配置，也是可以支持的。
 这个时候只需要完成以下两步：
 
-1、在应用的 bootstrap.properties 配置文件中显示的声明 dataid 文件扩展名。如下所示
+1、在应用的 bootstrap.properties 或 bootstrap.yml 配置文件中显示的声明 dataid 文件扩展名。如下所示
 
 .bootstrap.properties
-[source,yaml]
+[source,properties]
 ----
 spring.cloud.nacos.config.file-extension=yaml
 ----
@@ -160,9 +159,9 @@ user name :nacos-config-yaml; age: 68
 2018-11-02 14:59:00.529  INFO 32928 --- [-127.0.0.1:8848] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@265a478e: startup date [Fri Nov 02 14:59:00 CST 2018]; root of context hierarchy
 ----
 
-=== 支持配置的动态更新
+== 支持配置的动态更新
 
-spring-cloud-starter-alibaba-nacos-config 也支持配置的动态更新，如下所示，当变更user.name时，应用程序中能够获取到最新的值：
+spring-cloud-starter-alibaba-nacos-config 默认已开启配置的动态更新，如下所示，当变更user.name时，应用程序中能够获取到最新的值：
 
 [source,subs="normal"]
 ----
@@ -176,9 +175,13 @@ user name :nacos-config-yaml-update; age: 68
 user name :nacos-config-yaml-update; age: 68
 ----
 
-=== 可支持profile粒度的配置
+NOTE: 你可以通过配置 spring.cloud.nacos.config.refresh.enabled=false 来关闭动态刷新
 
-spring-cloud-starter-alibaba-nacos-config 在加载配置的时候，不仅仅加载了以dataid为${spring.application.name}.${file-extension:properties}为前缀的基础配置，还加载了dataid为${spring.application.name}-${profile}.${file-extension:properties}的基础配置。在日常开发中如果遇到多套环境下的不同配置，可以打开Spring自带的配置功能。
+== 支持profile粒度的配置
+
+spring-cloud-starter-alibaba-nacos-config 在加载配置的时候，不仅仅加载了以dataid为${spring.application.name}.${file-extension:properties}的基础配置，还加载了dataid为${spring.application.name}-${profile}.${file-extension:properties}的基础配置。且后者的优先级高于前者。
+
+在日常开发中如果遇到多套环境下的不同配置，可以通过 profile 来隔离不同环境的配置。
 
 [source,properties]
 ----
