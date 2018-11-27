@@ -9,15 +9,9 @@ Spring Cloud Alibaba Nacos Config 是 Config Server 和 Client 的替代方案�
 
 === Nacos 服务端初始化
 
-1、启动Nacos Server。启动方式可见 https://nacos.io/zh-cn/docs/quick-start.html[Nacos 官网]
+1、启动 Nacos Server。启动方式可见 https://nacos.io/zh-cn/docs/quick-start.html[Nacos 官网]
 
-2、启动好 Nacos 之后，在 Nacos 添加如下的配置。
-
-    存储在 Nacos 中数据的 key 格式的格式为  `${prefix} - ${spring.active.profile} . ${file-extension}`
-
-NOTE: `prefix` 默认从配置 `spring.application.name` 中取值，`file-extension` 默认的值为 "properties"
-
-NOTE: 当 profile 未配置时，key 的格式为 `${prefix}`.`${file-extension}`
+2、启动好 Nacos 之后，在 Nacos 添加 Spring Cloud 应用的外部化配置。
 
 [source,subs="normal"]
 ----
@@ -25,15 +19,19 @@ Data ID:    nacos-config.properties
 
 Group  :    DEFAULT_GROUP
 
-配置格式:    TEXT
-
-配置内容：   user.name: nacos-config-properties
-            user.age: 90
+配置内容：   user.name=nacos-config-properties
+            user.age=90
 ----
+
+    Nacos 中的 key，即 DataId 的格式为 `${prefix} - ${spring.active.profile} . ${file-extension}`
+
+NOTE: `prefix` 默认从配置 `spring.application.name` 中取值，`file-extension` 默认的值为 "properties"
+
+NOTE: 当 profile 未配置时，DataId 的格式为 `${prefix}`.`${file-extension}`
 
 === 客户端使用方式
 
-为了能够在应用程序中使用 Nacos 作为 Sping Cloud Config 的后端存储服务，在您构建 Spring Boot 应用的同时添加一个 Spring Cloud Starter。  group 为 `org.springframework.cloud` ， artifact id 为 `spring-cloud-starter-alibaba-nacos-config`。详细的版本对应关系请参考 https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E[版本说明]。以下是一个基础的 maven 依赖配置:
+使用 Spring Cloud Alibaba Nacos Config 实现 Spring Cloud 应用的外部化配置，需要在构建 Spring Boot 应用的同时添加一个 Spring Cloud Starter。  group 为 `org.springframework.cloud` ， artifact id 为 `spring-cloud-starter-alibaba-nacos-config`。详细的版本对应关系请参考 https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E[版本说明]。以下是一个基础的 maven 依赖配置:
 
 [source,xml]
 ----
@@ -100,12 +98,12 @@ public class ProviderApplication {
 }
 ----
 
-spring-cloud-starter-alibaba-nacos-config 对于 Nacos 服务端的基础配置没有默认值，因此在运行此 Example 之前， 必须使用 bootstrap.properties 配置文件来配置 Nacos Config 的元信息，例如：
+在运行此 Example 之前， 必须使用 `bootstrap.properties` 配置文件来配置 Nacos Config 的元信息，最基本的信息如下：
 
 .bootstrap.properties
 [source,properties]
 ----
-spring.application.name=nacos-config #注意，spring.application.name 必须要放在bootstrap.properties中
+spring.application.name=nacos-config
 spring.cloud.nacos.config.server-addr=127.0.0.1:8848
 ----
 
@@ -113,7 +111,7 @@ NOTE: 注意当你使用域名的方式来访问 Nacos 时，`spring.cloud.nacos
 例如 Nacos 的域名为abc.com.nacos，监听的端口为 80，则 `spring.cloud.nacos.config.server-addr=abc.com.nacos:80`。
 注意 80 端口不能省略。
 
-启动这个Example，可以在控制台看到打印出的值正是在Nacos上预先配置好的值。
+启动这个Example，可以在控制台看到打印出的值正是在 Nacos 上 DataID 为 nacos-config.properties 对应的内容。
 
 [source,subs="normal"]
 ----
@@ -125,18 +123,18 @@ user name :nacos-config-properties; age: 90
 
 == 更改配置文件扩展名
 
-spring-cloud-starter-alibaba-nacos-config 默认对 dateid 的文件扩展名是 properties。如果习惯使用yaml格式来作为应用中的基础配置，也是可以支持的。
+spring-cloud-starter-alibaba-nacos-config 中 DataId 默认的文件扩展名是 properties。除去 properties 格式之外，也支持 yaml 格式。
+
 这个时候只需要完成以下两步：
 
 1、在应用的 bootstrap.properties 或 bootstrap.yml 配置文件中显示的声明 dataid 文件扩展名。如下所示
 
-.bootstrap.properties
 [source,properties]
 ----
 spring.cloud.nacos.config.file-extension=yaml
 ----
 
-2、在 Nacos 的控制台新增一个dataid为yaml为扩展名的配置，如下所示：
+2、在 Nacos 的控制台新增一个 DataId 中以扩展名 .yaml 结尾的配置，如下所示：
 
 [source,subs="normal"]
 ----
@@ -150,7 +148,7 @@ Group  :        DEFAULT_GROUP
                 user.age: 68
 ----
 
-这两步完成后，重启测试程序，可以在控制台看到输出是以dataid为opensource-service-provider3.yaml配置的值。
+这两步完成后，重启测试程序，可以在控制台看到输出是以 DataId 为 nacos-config.yaml 配置的值。
 
 [source,subs="normal"]
 ----
@@ -161,7 +159,7 @@ user name :nacos-config-yaml; age: 68
 
 == 支持配置的动态更新
 
-spring-cloud-starter-alibaba-nacos-config 默认已开启配置的动态更新，如下所示，当变更user.name时，应用程序中能够获取到最新的值：
+spring-cloud-starter-alibaba-nacos-config 默认已开启配置的动态更新，如下所示，当变更 user.name 时，应用程序中能够获取到最新的值：
 
 [source,subs="normal"]
 ----
@@ -177,18 +175,19 @@ user name :nacos-config-yaml-update; age: 68
 
 NOTE: 你可以通过配置 spring.cloud.nacos.config.refresh.enabled=false 来关闭动态刷新
 
-== 支持profile粒度的配置
+== 支持 profile 粒度的配置
 
-spring-cloud-starter-alibaba-nacos-config 在加载配置的时候，不仅仅加载了以dataid为${spring.application.name}.${file-extension:properties}的基础配置，还加载了dataid为${spring.application.name}-${profile}.${file-extension:properties}的基础配置。且后者的优先级高于前者。
+spring-cloud-starter-alibaba-nacos-config 在加载配置的时候，首先会尝试去加载 dataid 为${spring.application.name}.${file-extension}的配置，当设置了`spring.profiles.active` 中配置有内容时，还会尝试去加载了dataid 为${spring.application.name}-${profile}.${file-extension}的配置，且后者的优先级高于前者。
 
-在日常开发中如果遇到多套环境下的不同配置，可以通过在 bootstrap.properties 或 bootstrap.yaml 中配置 profile 来隔离不同环境的配置。
+spring.profiles.active 属于配置的元数据，所以也必须配置在 bootstrap.properties 或 bootstrap.yaml 中。
 
 [source,properties]
 ----
-spring.profiles.active=${deploy.env}
+spring.profiles.active=develop
 ----
+NOTE: 也可以通过 JVM 参数 -Dspring.profiles.active=develop 或者 --spring.profiles.active=develop 这类优先级更高的方式来配置，遵循 Spring Boot 规范。
 
-其中 ${deploy.env}变量的值可以在启动应用时通过-Ddeploy.env=*****来动态指定。比如现在在Nacos上新增了一个dataid为：nacos-config-develop.yaml的基础配置，如下所示：
+在Nacos上新增了一个dataid为：nacos-config-develop.yaml的基础配置，如下所示：
 
 [source,subs="normal"]
 ----
@@ -199,9 +198,9 @@ Group  :        DEFAULT_GROUP
 配置格式:        YAML
 
 配置内容:        current.env: develop-env
+                age: 69
 ----
 
-同时启动应用的时候通过-Ddeploy.env=develop 来指定当前spring.profiles.active的值。
 启动 Spring Boot 应用测试的代码如下：
 
 [source,java]
@@ -226,29 +225,6 @@ public class ProviderApplication {
 
 [source,subs="normal"]
 ----
-in develop-evn enviroment; user name :nacos-config-yaml-update; age: 68
+in develop-evn enviroment; user name :nacos-config-yaml-update; age: 69
 2018-11-02 15:34:25.013  INFO 33014 --- [ Thread-11] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6f1c29b7: startup date [Fri Nov 02 15:33:57 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@63355449
 ----
-
-如果需要切换到生产环境，那么只需要更改启动的-Ddeploy.env=product 参数即可。前提是生产环境上Nacos已经添加了该环境的基础配置。例如，现在在生成环境下的Naocs添加了dataid为：nacos-config-product.yaml的配置：
-
-[source,subs="normal"]
-----
-Data ID:        nacos-config-product.yaml
-
-Group  :        DEFAULT_GROUP
-
-配置格式:        YAML
-
-配置内容:        current.env: product-env
-----
-
-以-Ddeploy.env=product 启动测试程序，输出结果如下：
-
-[source,subs="normal"]
-----
-in product-env enviroment; user name :nacos-config-yaml-update; age: 68
-2018-11-02 15:42:14.628  INFO 33024 --- [Thread-11] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6aa8e115: startup date [Fri Nov 02 15:42:03 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@19bb07ed
-----
-
-
