@@ -181,7 +181,7 @@ NOTE: 你可以通过配置 spring.cloud.nacos.config.refresh.enabled=false 来�
 
 spring-cloud-starter-alibaba-nacos-config 在加载配置的时候，不仅仅加载了以dataid为${spring.application.name}.${file-extension:properties}的基础配置，还加载了dataid为${spring.application.name}-${profile}.${file-extension:properties}的基础配置。且后者的优先级高于前者。
 
-在日常开发中如果遇到多套环境下的不同配置，可以通过 profile 来隔离不同环境的配置。
+在日常开发中如果遇到多套环境下的不同配置，可以通过在 bootstrap.properties 或 bootstrap.yaml 中配置 profile 来隔离不同环境的配置。
 
 [source,properties]
 ----
