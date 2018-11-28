@@ -23,11 +23,9 @@ Group  :    DEFAULT_GROUP
             user.age=90
 ----
 
-    Nacos 中的 key，即 DataId 的格式为 `${prefix} - ${spring.active.profile} . ${file-extension}`
+    Nacos 中的 key，即 DataId 的格式为 `${prefix}. ${file-extension}`
 
 NOTE: `prefix` 默认从配置 `spring.application.name` 中取值，`file-extension` 默认的值为 "properties"
-
-NOTE: 当 profile 未配置时，DataId 的格式为 `${prefix}`.`${file-extension}`
 
 === 客户端使用方式
 
