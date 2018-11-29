@@ -11,7 +11,7 @@ Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。�
 - [版本说明](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
 - 开源组件
    - [Nacos Config](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/Nacos-config)
-   - [Nacos-Discovery](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/Nacos-discovery)
+   - [Nacos Discovery](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/Nacos-discovery)
    - [Sentinel](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/Sentinel)
    - [RocketMQ](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/RocketMQ)
 - 商业化组件
