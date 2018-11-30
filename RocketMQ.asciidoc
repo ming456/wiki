@@ -175,8 +175,8 @@ Consumer端支持的配置：
 |`spring.cloud.stream.rocketmq.bindings.your-input-binding.consumer.enabled`|是否启用consumer|true
 |`spring.cloud.stream.rocketmq.bindings.your-input-binding.consumer.tags`|Consumer订阅只有包括这些tags的topic消息。多个标签之间使用 "\|\|" 分割|
 |`spring.cloud.stream.rocketmq.bindings.your-input-binding.consumer.sql`|Consumer订阅满足sql要求的topic消息|
-|`spring.cloud.stream.rocketmq.bindings.your-input-binding.consumer.broadcasting`|消息发送的最大字节数|false
-|`spring.cloud.stream.rocketmq.bindings.your-input-binding.consumer.orderly`|消息发送的最大字节数|false
+|`spring.cloud.stream.rocketmq.bindings.your-input-binding.consumer.broadcasting`|Consumer是否是广播模式|false
+|`spring.cloud.stream.rocketmq.bindings.your-input-binding.consumer.orderly`|顺序消费 or 异步消费|false
 |====
 
 ### Endpoint支持
