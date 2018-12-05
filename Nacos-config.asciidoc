@@ -227,17 +227,27 @@ in develop-evn enviroment; user name :nacos-config-yaml-update; age: 69
 2018-11-02 15:34:25.013  INFO 33014 --- [ Thread-11] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6f1c29b7: startup date [Fri Nov 02 15:33:57 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@63355449
 ----
 
-== 使用 Nacos 的自定义命名空间(Namespace)
+=== 支持自定义 namespace 的配置
 首先看一下 Nacos 的 Namespace 的概念， https://nacos.io/zh-cn/docs/concepts.html[Nacos 概念]
 
 [quote]
 用于进行租户粒度的配置隔离。不同的命名空间下，可以存在相同的 Group 或 Data ID 的配置。Namespace 的常用场景之一是不同环境的配置的区分隔离，例如开发测试环境和生产环境的资源（如配置、服务）隔离等。
 
-默认情况下，所有的配置获取都是从 Nacos 的默认命名空间获取的。如果需要使用自定义的命名空间，可以通过如下方式来配置
-
-[source,subs="normal"]
+在没有明确指定 `${spring.cloud.nacos.config.namespace}` 配置的情况下， 默认使用的是 Nacos 上 Public 这个namespae。如果需要使用自定义的命名空间，可以通过以下配置来实现：
+[source,properties]
 ----
-spring.cloud.nacos.config.namespace=9f45f496-1029-4912-9a9c-ce09ea6bdcd5
+spring.cloud.nacos.config.namespace=b3404bc0-d7dc-4855-b519-570ed34b62d7
 ----
 
-其中 9f45f496-1029-4912-9a9c-ce09ea6bdcd5 为 Nacos 的 命名空间ID，可以通过 Nacos 的控制台查询。配置后，所有的配置信息将从此 命名空间ID 对应的命名空间中获取。
+NOTE: 该配置必须放在 bootstrap.properties 文件中。此外 `spring.cloud.nacos.config.namespace` 的值是 namespace 对应的 id，id 值可以在 Nacos 的控制台获取。并且在添加配置时注意不要选择其他的 namespae，否则将会导致读取不到正确的配置。
+
+=== 支持自定义 Group 的配置
+
+在没有明确指定 `${spring.cloud.nacos.config.group}` 配置的情况下， 默认使用的是 DEFAULT_GROUP 。如果需要自定义自己的 Group，可以通过以下配置来实现：
+
+[source,properties]
+----
+spring.cloud.nacos.config.group=DEVELOP_GROUP
+----
+
+NOTE: 该配置必须放在 bootstrap.properties 文件中。并且在添加配置时 Group 的值一定要和 `spring.cloud.nacos.config.group` 的配置值一致。
