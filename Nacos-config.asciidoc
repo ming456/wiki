@@ -230,10 +230,10 @@ in develop-evn enviroment; user name :nacos-config-yaml-update; age: 69
 == 使用 Nacos 的自定义命名空间(Namespace)
 首先看一下 Nacos 的 Namespace 的概念， https://nacos.io/zh-cn/docs/concepts.html[Nacos 概念]
 
-==== 命名空间（Namespace）
+[quote]
 用于进行租户粒度的配置隔离。不同的命名空间下，可以存在相同的 Group 或 Data ID 的配置。Namespace 的常用场景之一是不同环境的配置的区分隔离，例如开发测试环境和生产环境的资源（如配置、服务）隔离等。
 
-默认情况下，所有的配置获取都是从 Nacos 的默认命名空间获取的，如果需要使用自定义的命名空间，可以通过如下方式来配置
+默认情况下，所有的配置获取都是从 Nacos 的默认命名空间获取的。如果需要使用自定义的命名空间，可以通过如下方式来配置
 
 [source,subs="normal"]
 ----
