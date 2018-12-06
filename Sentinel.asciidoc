@@ -100,9 +100,9 @@ spring:
 
 ### Feign 支持
 
-Sentinel 适配了 https://github.com/OpenFeign/feign[Feign] 组件。如果想使用，除了引入 sentinel-starter 的依赖外还需要 3 个步骤：
+Sentinel 适配了 https://github.com/OpenFeign/feign[Feign] 组件。如果想使用，除了引入 `sentinel-starter` 的依赖外还需要 3 个步骤：
 
-* 配置文件打开 sentinel 对 feign的支持：`feign.sentinel.enabled=true`
+* 配置文件打开 sentinel 对 feign 的支持：`feign.sentinel.enabled=true`
 * 加入 `feign starter` 依赖触发 `sentinel starter` 的配置类生效：
 ```xml
 <dependency>
@@ -172,7 +172,9 @@ NOTE: 以 `https://www.taobao.com/test` 这个 url 为例。对应的资源名�
 
 ### 动态数据源支持
 
-*在版本 0.2.0.RELEASE 或 0.1.0.RELEASE 之前*，要在 Spring Cloud Alibaba Sentinel 下使用动态数据源，需要3个步骤：
+#### 在版本 0.2.0.RELEASE 或 0.1.0.RELEASE 之前
+
+需要3个步骤才可完成数据源的配置：
 
 * 配置文件中定义数据源信息。比如使用文件：
 
@@ -218,7 +220,9 @@ private ReadableDataSource dataSource;
 [Sentinel Starter] load 3 flow rules
 ```
 
-*在版本 0.2.0.RELEASE 或 0.1.0.RELEASE 之后*，要在 Spring Cloud Alibaba Sentinel 下使用动态数据源，只需要1个步骤：
+#### 在版本 0.2.0.RELEASE 或 0.1.0.RELEASE 之后
+
+只需要1个步骤就可完成数据源的配置：
 
 * 直接在 `application.properties` 配置文件中配置数据源信息即可
 
