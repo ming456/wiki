@@ -100,7 +100,53 @@ spring:
 
 ### Feign 支持
 
-DOING
+Sentinel 适配了 https://github.com/OpenFeign/feign[Feign] 组件。如果想使用，除了引入 sentinel-starter 的依赖外还需要 3 个步骤：
+
+* 配置文件打开 sentinel 对 feign的支持：`feign.sentinel.enabled=true`
+* 加入 `feign starter` 依赖触发 `sentinel starter` 的配置类生效：
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-openfeign</artifactId>
+</dependency>
+```
+* `feign` 内部的 `loadbalance` 功能依赖 Netflix 的 `ribbon` 模块(如果不使用 `loadbalance` 功能可不引入)：
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+</dependency>
+```
+
+这是一个 `FeignClient` 对应的接口：
+
+```java
+@FeignClient(name = "service-provider", fallback = EchoServiceFallback.class, configuration = FeignConfiguration.class)
+public interface EchoService {
+    @RequestMapping(value = "/echo/{str}", method = RequestMethod.GET)
+    String echo(@PathVariable("str") String str);
+}
+
+class FeignConfiguration {
+    @Bean
+    public EchoServiceFallback echoServiceFallback() {
+        return new EchoServiceFallback();
+    }
+}
+
+class EchoServiceFallback implements EchoService {
+    @Override
+    public String echo(@PathVariable("str") String str) {
+        return "echo fallback";
+    }
+}
+```
+
+NOTE: Feign 对应的接口中的资源名策略定义：httpmethod:http://requesturl
+
+`EchoService` 接口中方法 `echo` 对应的资源名为 `GET:http://service-provider/echo/{str}`。
+
+请注意：`@FeignClient` 注解中的所有属性，Sentinel 都做了兼容。
 
 ### RestTemplate 支持
 
@@ -253,14 +299,16 @@ NOTE: 默认情况下，xml 格式是不支持的。需要添加 `jackson-datafo
 ^|配置项 ^|含义 ^|默认值
 |`spring.cloud.sentinel.enabled`|Sentinel自动化配置是否生效|true
 |`spring.cloud.sentinel.eager`|取消Sentinel控制台懒加载|false
-|`spring.cloud.sentinel.charset`|metric文件字符集|UTF-8
 |`spring.cloud.sentinel.transport.port`|应用与Sentinel控制台交互的端口，应用本地会起一个该端口占用的HttpServer|8721
 |`spring.cloud.sentinel.transport.dashboard`|Sentinel 控制台地址|
 |`spring.cloud.sentinel.transport.heartbeatIntervalMs`|应用与Sentinel控制台的心跳间隔时间|
 |`spring.cloud.sentinel.filter.order`|Servlet Filter的加载顺序。Starter内部会构造这个filter|Integer.MIN_VALUE
 |`spring.cloud.sentinel.filter.spring.url-patterns`|数据类型是数组。表示Servlet Filter的url pattern集合|/*
+|`spring.cloud.sentinel.metric.charset`|metric文件字符集|UTF-8
 |`spring.cloud.sentinel.metric.fileSingleSize`|Sentinel metric 单个文件的大小|
 |`spring.cloud.sentinel.metric.fileTotalCount`|Sentinel metric 总文件数量|
+|`spring.cloud.sentinel.log.dir`|Sentinel 日志文件所在的目录|
+|`spring.cloud.sentinel.log.switch-pid`|Sentinel 日志文件名是否需要带上pid|false
 |`spring.cloud.sentinel.servlet.blockPage`| 自定义的跳转 URL，当请求被限流时会自动跳转至设定好的 URL |
 |`spring.cloud.sentinel.flow.coldFactor`| https://github.com/alibaba/Sentinel/wiki/%E9%99%90%E6%B5%81---%E5%86%B7%E5%90%AF%E5%8A%A8[冷启动因子] |3
 |====
