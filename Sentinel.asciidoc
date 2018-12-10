@@ -142,7 +142,7 @@ class EchoServiceFallback implements EchoService {
 }
 ```
 
-NOTE: Feign 对应的接口中的资源名策略定义：httpmethod:http://requesturl
+NOTE: Feign 对应的接口中的资源名策略定义：httpmethod:protocol://requesturl
 
 `EchoService` 接口中方法 `echo` 对应的资源名为 `GET:http://service-provider/echo/{str}`。
 
