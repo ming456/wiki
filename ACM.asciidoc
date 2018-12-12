@@ -1,6 +1,8 @@
 == Spring Cloud AliCloud ACM
 
-Spring Cloud AliCloud ACM 是阿里云提供的商业版应用配置管理(Application Configuration Management) 产品 在 Spring Cloud 应用侧的客户端实现，Spring Cloud AliCloud ACM 是 Config Server 和 Client 的替代方案，客户端和服务器上的概念与 Spring Environment 和 PropertySource 有着一致的抽象，在特殊的 bootstrap 阶段，配置被加载到 Spring 环境中。当应用程序通过部署管道从开发到测试再到生产时，您可以管理这些环境之间的配置，并确保应用程序具有迁移时需要运行的所有内容。
+Spring Cloud AliCloud ACM 是阿里云提供的商业版应用配置管理(Application Configuration Management) 产品 在 Spring Cloud 应用侧的客户端实现，且目前完全免费。
+
+Spring Cloud AliCloud ACM 是 Config Server 和 Client 的替代方案，客户端和服务器上的概念与 Spring Environment 和 PropertySource 有着一致的抽象，在特殊的 bootstrap 阶段，配置被加载到 Spring 环境中。当应用程序通过部署管道从开发到测试再到生产时，您可以管理这些环境之间的配置，并确保应用程序具有迁移时需要运行的所有内容。
 
 === 如何引入 Spring Cloud AliCloud ACM
 
@@ -96,6 +98,8 @@ spring.cloud.alicloud.secret-key=你的阿里云SK
 spring.cloud.alicloud.acm.endpoint=acm.aliyun.com
 spring.cloud.alicloud.acm.namespace=你的 ACM namespace，需要在 ACM 控制台查询
 ----
+
+NOTE: EDAS 提供应用托管服务，如果你将应用托管到 EDAS，那么 EDAS 将会自动为你填充所有配置。
 
 === 在配置中心添加配置
 
