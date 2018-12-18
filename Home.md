@@ -18,6 +18,7 @@ Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。�
    - [ANS](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/ANS)
    - [ACM](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/ACM)
    - [OSS](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/OSS)
+   - [SchedulerX](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/SchedulerX)
 - Example
    - [Sentinel](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/sentinel-example/sentinel-core-example/readme-zh.md)
    - [Nacos Config](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/nacos-example/nacos-config-example/readme-zh.md)
