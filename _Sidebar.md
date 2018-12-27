@@ -1,4 +1,5 @@
 - [Home](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki)
+- [如何贡献](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/%E5%A6%82%E4%BD%95%E8%B4%A1%E7%8C%AE%E4%BB%A3%E7%A0%81)
 - [版本说明](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
 - 开源组件
    - [Nacos Config](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/Nacos-config)
