@@ -17,3 +17,4 @@
    - [Nacos Discovery](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/nacos-example/nacos-discovery-example/readme-zh.md)
    - [RocketMQ](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/rocketmq-example/readme-zh.md)
    - [OSS](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/oss-example/readme-zh.md)
+- [SCA博文链接](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/SCA%E7%9B%B8%E5%85%B3%E5%8D%9A%E6%96%87%E8%BF%9E%E6%8E%A5)
