@@ -126,7 +126,21 @@ RocketMQ Binder 的核心主要就是这3个类：`RocketMQMessageChannelBinder`
 
 `RocketMQMessageHandler` 用于 RocketMQ `Producer` 的启动以及消息的发送，其内部会根据 `spring-messaging` 模块内 `org.springframework.messaging.Message` 消息类，去创建 RocketMQ 的消息类 `org.apache.rocketmq.common.message.Message`。
 
-在构造 `org.apache.rocketmq.common.message.Message` 的过程中会根据 `org.springframework.messaging.Message` 的 Header 构造成 `RocketMQMessageHeaderAccessor`。然后再根据 `RocketMQMessageHeaderAccessor` 中的一些属性，比如 tags、keys、flag等属性设置到 RocketMQ 的消息类 `org.apache.rocketmq.common.message.Message` 中。
+在构造 `org.apache.rocketmq.common.message.Message` 的过程中会根据 `org.springframework.messaging.Message` 的 Header 构造成 `RocketMQMessageHeaderAccessor`。然后再根据 `RocketMQMessageHeaderAccessor` 中的一些属性，比如 tags、keys、flag等属性设置到 RocketMQ 的消息类 `org.apache.rocketmq.common.message.Message` 中。`RocketMQMessageHeaderAccessor` 中的 Key 可以参考下面的表格进行获取或设置：
+
+:frame: topbot
+[width="60%",options="header"]
+|====
+^|配置项 ^|含义
+|ACKNOWLEDGEMENT|获取 `Acknowledgement`
+|TAGS|Message Tags
+|PROPERTY_KEYS|Message Keys
+|ORIGINAL_ROCKETMQ_MESSAGE| RocketMQ 消息对象 `MessageExt`
+|PROPERTY_DELAY_TIME_LEVEL| Message Delay Level
+|ROCKETMQ_FLAG| Message Flag
+|ROCKETMQ_TRANSACTIONAL_ARG| 事务消息中 `LocalTransactionExecuter` 中使用的参数
+|ROCKETMQ_SEND_RESULT| 消息发送结果
+|====
 
 `RocketMQInboundChannelAdapter` 用于 RocketMQ `Consumer` 的启动以及消息的接收。其内部还支持 https://github.com/spring-projects/spring-retry[spring-retry] 的使用。
 
