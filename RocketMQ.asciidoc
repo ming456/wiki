@@ -134,9 +134,9 @@ RocketMQ Binder 的核心主要就是这3个类：`RocketMQMessageChannelBinder`
 ^|配置项 ^|含义
 |ACKNOWLEDGEMENT|获取 `Acknowledgement`
 |TAGS|Message Tags
-|PROPERTY_KEYS|Message Keys
+|KEYS|Message Keys
 |ORIGINAL_ROCKETMQ_MESSAGE| RocketMQ 消息对象 `MessageExt`
-|PROPERTY_DELAY_TIME_LEVEL| Message Delay Level
+|DELAY| Message Delay Level
 |ROCKETMQ_FLAG| Message Flag
 |ROCKETMQ_TRANSACTIONAL_ARG| 事务消息中 `LocalTransactionExecuter` 中使用的参数
 |ROCKETMQ_SEND_RESULT| 消息发送结果
