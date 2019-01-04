@@ -100,7 +100,7 @@ spring:
 
 ### Feign 支持
 
-Sentinel 适配了 https://github.com/OpenFeign/feign[Feign] 组件。如果想使用，除了引入 `sentinel-starter` 的依赖外还需要 3 个步骤：
+Sentinel 适配了 https://github.com/OpenFeign/feign[Feign] 组件。如果想使用，除了引入 `sentinel-starter` 的依赖外还需要 2 个步骤：
 
 * 配置文件打开 sentinel 对 feign 的支持：`feign.sentinel.enabled=true`
 * 加入 `feign starter` 依赖触发 `sentinel starter` 的配置类生效：
@@ -108,13 +108,6 @@ Sentinel 适配了 https://github.com/OpenFeign/feign[Feign] 组件。如果想�
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-openfeign</artifactId>
-</dependency>
-```
-* `feign` 内部的 `loadbalance` 功能依赖 Netflix 的 `ribbon` 模块(如果不使用 `loadbalance` 功能可不引入)：
-```xml
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
 </dependency>
 ```
 
