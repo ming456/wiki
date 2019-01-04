@@ -169,7 +169,7 @@ public class ExceptionUtil {
 }
 ```
 
-`@SentinelRestTemplate` 注解的限流(`blockHandler`, `blockHandlerClass`)和降级(`fallback`, `fallbackClass`)不强制填写，当被 Sentinel 熔断后，会返回 `RestTemplate request block by sentinel` 信息，或者也可以填写对应的方法自行处理。
+`@SentinelRestTemplate` 注解的限流(`blockHandler`, `blockHandlerClass`)和降级(`fallback`, `fallbackClass`)不强制填写，当被 Sentinel 熔断后，会返回 `RestTemplate request block by sentinel` 信息，或者也可以编写对应的方法自行处理。
 
 Sentinel RestTemplate 限流的资源规则提供两种粒度：
 
@@ -177,7 +177,7 @@ Sentinel RestTemplate 限流的资源规则提供两种粒度：
 
 * `schema://host:port`：协议、主机和端口
 
-NOTE: 以 `https://www.taobao.com/test` 这个 url 为例。对应的资源名有两种粒度，分别是 `https://www.taobao.com:80` 以及 `https://www.taobao.com:80/test`
+NOTE: 以 `https://www.taobao.com/test` 这个 url 为例。对应的资源名有两种粒度，分别是 `https://www.taobao.com` 以及 `https://www.taobao.com/test`
 
 ### 动态数据源支持
 
