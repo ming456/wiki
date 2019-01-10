@@ -27,7 +27,7 @@ Spring Cloud Alibaba 已经发布了0.2.1版本，需要首先导入依赖管理
 ----
 <dependency>
     <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-alicloud-schedulerX</artifactId>
+    <artifactId>spring-cloud-starter-alicloud-schedulerx</artifactId>
 </dependency>
 ----
 
