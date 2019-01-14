@@ -325,3 +325,5 @@ NOTE: 默认情况下，xml 格式是不支持的。需要添加 `jackson-datafo
 |`spring.cloud.sentinel.servlet.blockPage`| 自定义的跳转 URL，当请求被限流时会自动跳转至设定好的 URL |
 |`spring.cloud.sentinel.flow.coldFactor`| https://github.com/alibaba/Sentinel/wiki/%E9%99%90%E6%B5%81---%E5%86%B7%E5%90%AF%E5%8A%A8[冷启动因子] |3
 |====
+
+NOTE: 请注意。这些配置只有在 Servlet 环境下才会生效，RestTemplate 和 Feign 针对这些配置都无法生效
