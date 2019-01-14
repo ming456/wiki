@@ -55,7 +55,7 @@ access-key 和 secret-key 是阿里云账号的 AK/SK，需要首先注册阿里
 
 ==== 引入 SMS API
 
-Spring Cloud Alicloud SMS 中的 SMS API 基于阿里云官方 SMS SDK 提供，具备单个短信发送、多个短信批量发送、短信查询、短信消息(`短信回执消息` 和 `上行短信消息`) 类行操作API。
+Spring Cloud Alicloud SMS 中的 SMS API 基于阿里云官方 SMS SDK ,提供具备单个短信发送、多个短信批量发送、短信查询、短信消息(`短信回执消息` 和 `上行短信消息`) 类行操作API。
 
 一个简单的使用 SMS API 发送短信的应用如下。
 
