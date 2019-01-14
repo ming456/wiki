@@ -11,6 +11,7 @@
    - [ACM](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/ACM)
    - [OSS](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/OSS)
    - [SchedulerX](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/SchedulerX)
+   - [SMS](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/SMS)   
 - Example
    - [Sentinel](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/sentinel-example/sentinel-core-example/readme-zh.md)
    - [Nacos Config](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/nacos-example/nacos-config-example/readme-zh.md)
