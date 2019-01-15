@@ -1,2 +1,3 @@
 - [SpringCloud 构建微服务系统之服务注册和发现（nacos）](https://blog.csdn.net/u010046908/article/details/85260717)
 - [microservices-with-spring-cloud-alibaba](https://dzone.com/articles/microservices-with-spring-cloud-alibaba)
+- [Spring Tips: Bootiful Alibaba](https://spring.io/blog/2018/12/26/spring-tips-bootiful-alibaba)
