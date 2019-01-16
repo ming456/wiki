@@ -208,4 +208,4 @@ Endpoint Url: http://localhost:port/actuator/migrate
 
 ![服务调用](http://edas.oss-cn-hangzhou.aliyuncs.com/deshao/pictures/call_service.png)
 
-那在混存迁移过程中，如上图所示最好是先从 D 服务开始，依次然后最后到 Api-Gateway。最后迁移完毕，就可以将 Eureka 的服务实例给下线了。		
+那在混存迁移过程中，如上图所示最好是先从 D 服务开始，依次到 Api-Gateway，最后迁移完毕，就可以将 Eureka 的服务实例给下线了。		
