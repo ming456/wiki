@@ -1,5 +1,3 @@
-# SCN 迁移 SCA 之 Eureka 迁移
-
 Spring Cloud 官方宣布 Spring Cloud Netflix 进入维护状态，后续不再进行更新已成为事实。作为开发者的我们，如何使用极简的方式替换现有的 Netflix 组件成为了首要解决的问题。Spring Cloud Alibaba 实现了 Spring Cloud 服务注册的标准规范，这就天然的给开发者提供了一种非常便利的方式将服务注册中心的 Eureka 迁移到商业化的组件 ANS 。 
 
 下面是大致整理了 SCN 迁移 SCA 之 Eureka 迁移的三种方案。
