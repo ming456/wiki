@@ -108,3 +108,38 @@ access-key 和 secret-key 则是阿里云账号的 AK/SK，需要首先注册阿
 namespace 是阿里云 EDAS 产品的概念，用于隔离不同的环境，比如测试环境和生产环境。要获取 namespace 需要 https://common-buy.aliyun.com/?spm=5176.11451019.0.0.6f5965c0Uq5tue&commodityCode=edaspostpay#/buy[开通 EDAS 服务]，按量计费模式下开通是免费的，开通以后进入 https://edas.console.aliyun.com/#/namespaces?regionNo=cn-hangzhou[EDAS控制台]，即可看到对应的 namespace，比如 cn-hangzhou。
 
 NOTE: EDAS 提供应用托管服务，如果你将应用托管到 EDAS，那么 EDAS 将会自动为你填充所有配置。
+
+==== Eureka 如向 ANS 迁移
+
+Spring Cloud 官方宣布 Spring Cloud Netflix 进入维护状态，后续不再进行更新已成为事实。作为开发者的我们，如何使用极简的方式替换现有的 Netflix 组件成为了首要解决的问题。Spring Cloud Alibaba 实现了 Spring Cloud 服务注册的标准规范，这就天然的给开发者提供了一种非常便利的方式将服务注册中心的 Eureka 迁移到商业化的组件 ANS 。
+
+下面是大致整理了 SCN 迁移 SCA 之 Eureka 迁移的三种方案。
+
+* 方案1: `重启进程迁移`
+
+  客户改造完代码后，直接停掉所有的进程并重新部署新代码到 EDAS 上。
+
+  缺点：需要停机
+
+* 方案 2: 切流迁移
+
+  即准备两套环境，一套是迁移后的环境，一套现有的环境。总的流量入口控制访问流量流入迁移后的环境还是现有环境，两环境之间的服务是不可调用的。当迁移后的环境跑一段时间服务运行稳定后，对现有的环境机器总体停机，流量全部打到迁移后的环境；如果有问题，入口流量切断迁移后的环境，流量又访问现有的环境。
+
+  缺点：维护机器成本增加一倍
+
+
+* 方案 3: 混存迁移
+
+  在现有的环境里，对部分服务进行迁移的改造，部署后，服务既注册于 Eureka,又注册于 ANS 。当所有的服务都注册于 ANS 时，迁移完成，直接将 Eureka 的服务下线调。
+
+  缺点：实现起来较有挑战，需要双注册，双定阅。
+
+接下来将重点讨论下 混存迁移 的具体实现。
+
+混存迁移的核心思路是在 ANS Starter 中，支持多注册中心的双注册/双订阅，以此来达到不需要全部重启进程，也不需要增加一套环境的目的，降低成本，提高服务的在线服务时长。
+
+在 Spring Cloud 服务注册与发现的规范中，只能支持单注册中心，这主要是因为在 Spring Cloud 的服务注册与发现过程中，限制了在 Spring 的 Ioc 容器中只能存在一个 AnsServiceRegistry、AnsRegistration、AbstractAutoServiceRegistration 三种类型的 Bean。因此首要解决的第一个问题是：如何解决 Eureka Starter 和 ANS Starter 共存的问题 ？
+
+==== 如何解决 Eureka 和 ANS Starter 可同时引入
+
+
