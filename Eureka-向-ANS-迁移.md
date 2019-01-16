@@ -204,4 +204,8 @@ Endpoint Url: http://localhost:port/actuator/migrate
 
 ## 结束语
 	
-整个混存的迁移过程中，我们是建议从最底层的服务依赖开始做起，依次到最上层的服务，比如 Api-Gateway。最后迁移完毕，就可以将 Eureka 的服务实例给下线了。	
+整个混存的迁移过程中，我们是建议从最底层的服务依赖开始做起，依次到最上层的服务，如下所示的一个服务调用关系:
+
+![服务调用](http://edas.oss-cn-hangzhou.aliyuncs.com/deshao/pictures/call_service.png)
+
+那在混存迁移过程中，如上图所示最好是先从 D 服务开始，依次然后最后到 Api-Gateway。最后迁移完毕，就可以将 Eureka 的服务实例给下线了。		
