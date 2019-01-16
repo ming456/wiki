@@ -92,6 +92,60 @@ Spring Cloud 官方宣布 Spring Cloud Netflix 进入维护状态，后续不再
 运行态关闭混存平滑迁移内部的实现原理是实现了一个 **ApplicationListener**，并对 **RefreshEvent** 这个事件做了处理，**RefreshEvent** 这个事件是当 Spring Cloud Config 的外部化配置有变更时，会发布这么一个事件，从而感知到外部化配置发生了变化，从 Spring 的 Enviroment 中获取当前 **spring.cloud.alicloud.migrate.ans.switch** 这个配置值。
 
 
+在迁移中，可以访问 Endpoint id 为 **migrate**，来查看当前迁移的一个基本状态，以下是在Spring Boot 2.x 版本下访问的显示结果。
+
+
+```json
+Endpoint Url: http://localhost:port/actuator/migrate
+
+{
+  "sc-migrate-eureka-consumer": {
+    "30.5.125.22:40051": {
+      "server": {
+        // **** 省略
+        "instanceInfo": {
+          "instanceId": "30.5.125.22:sc-migrate-eureka-consumer:40051",
+          "app": "SC-MIGRATE-EUREKA-CONSUMER",
+          "appGroupName": null,
+          "ipAddr": "30.5.125.22",
+          "sid": "na",
+          "homePageUrl": "http://30.5.125.22:40051/",
+          "statusPageUrl": "http://30.5.125.22:40051/actuator/info",
+          "healthCheckUrl": "http://30.5.125.22:40051/actuator/health",
+          "secureHealthCheckUrl": null,
+          "vipAddress": "sc-migrate-eureka-consumer",
+          "secureVipAddress": "sc-migrate-eureka-consumer",
+          "countryId": 1,
+          "dataCenterInfo": {
+            "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
+            "name": "MyOwn"
+          },
+          // ****
+      },
+      "callCount": 8 //服务调用时选择该实例被调用的次数
+    },
+    "30.5.125.22:40052": {
+      "server": {
+        // **** 省略
+        "metaInfo": {
+          "instanceId": "30.5.125.22:sc-migrate-eureka-consumer:40052",
+          "appName": "sc-migrate-eureka-consumer",
+          "serverGroup": null,
+          "serviceIdForDiscovery": "sc-migrate-eureka-consumer"
+        },
+        "metadata": {
+          "source": "ANS" // 如果该实例是来自于 ANS，将会有此标识
+        }, 
+      	// **** 省略
+       },
+      "callCount": 9 //服务调用时选择该实例被调用的次数
+    }
+  }
+}
+
+```
+
+
 ### 迁移后
 
 运行一段时间后，如果发现服务之间调用稳定，这个时候就需要将 Eureka 的依赖给去掉。去掉的方式可以有两种选择：
@@ -103,7 +157,52 @@ Spring Cloud 官方宣布 Spring Cloud Netflix 进入维护状态，后续不再
 * 逐个的将应用对 Eureka 依赖给去掉。
 
 	这种方式相比于前一种，优缺点刚好反过来。即 **优点** 是如果去掉后发现有问题，可以及时的对某个服务实例进行回滚。**缺点** 是更改的工作量批次可能会高。
-	
+
+迁移后，访问 Endpoint id 为 **migrate** 的结果如下所示：
+
+
+```json
+{
+  "sc-migrate-eureka-consumer": {
+    "30.5.125.22:40051": {
+      "server": {
+        // **** 
+        "metaInfo": {
+          "instanceId": "30.5.125.22:sc-migrate-eureka-consumer:40051",
+          "appName": "sc-migrate-eureka-consumer",
+          "serverGroup": null,
+          "serviceIdForDiscovery": "sc-migrate-eureka-consumer"
+        },
+        "metadata": {
+          "source": "ANS" // 实例来自于 ANS
+        },
+        "alive": true,
+        // **** 
+      },
+      "callCount": 13 // 被调用次数
+    },
+    "30.5.125.22:40052": {
+      "server": {
+        // ****
+        "metaInfo": {
+          "instanceId": "30.5.125.22:sc-migrate-eureka-consumer:40052",
+          "appName": "sc-migrate-eureka-consumer",
+          "serverGroup": null,
+          "serviceIdForDiscovery": "sc-migrate-eureka-consumer"
+        },
+        "metadata": {
+          "source": "ANS" // 实例来自于 ANS
+        },
+        "alive": true,
+        // ****
+      },
+      "callCount": 15 // 被调用次数
+    }
+  }
+}
+```
+
+可以看到 **sc-migrate-eureka-consumer** 这个服务的两个实例拉取都来源于 ANS 。
 
 ## 结束语
 	
