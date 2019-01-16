@@ -364,7 +364,7 @@ NOTE: `spring.cloud.nacos.config.refreshable-dataids` 给出哪些需要支持�
 
 === 配置的优先级
 
-Spring Cloud Alibaba Nacos Config 目前提供了三种能力从 Nacos 拉取相关的配置。
+Spring Cloud Alibaba Nacos Config 目前提供了三种配置能力从 Nacos 拉取相关的配置。
 
 * A: 通过 `spring.cloud.nacos.config.shared-dataids` 支持多个共享 Data Id 的配置
 * B: 通过 `spring.cloud.nacos.config.ext-config[n].data-id` 的方式支持多个扩展 Data Id 的配置
