@@ -61,7 +61,7 @@ Spring Cloud 官方宣布 Spring Cloud Netflix 进入维护状态，后续不再
 ## 如何使用
 
 
-当您的注册中心需要从 Eureka 或者 Consul 迁移到 ANS 时，整过迁移的过程将要经历那几个阶段呢？
+当您的注册中心需要从 Eureka 或者 Consul 迁移到 ANS 时，整过迁移的过程将要经历哪几个阶段呢？
 
 
 ### 迁移中
