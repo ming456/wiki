@@ -311,6 +311,7 @@ NOTE: 在启动 Consumer 应用之前请先将 Nacos 服务启动好。具体启
 |`SecretKey`|`spring.cloud.nacos.discovery.secret-key`|`无`|`当要上阿里云时，阿里云上面的一个云账号密码`
 |`Metadata`|`spring.cloud.nacos.discovery.metadata`|`无`|`使用Map格式配置，用户可以根据自己的需要自定义一些和服务相关的元数据信息`
 |`日志文件名`|`spring.cloud.nacos.discovery.log-name`|`无`|
+|`集群`|`spring.cloud.nacos.discovery.cluster-name`|`DEFAULT`|`配置成Nacos集群名称`
 |`接入点`|`spring.cloud.nacos.discovery.enpoint`|`UTF-8`|`地域的某个服务的入口域名，通过此域名可以动态地拿到服务端地址`
 |`是否集成Ribbon`|`ribbon.nacos.enabled`|`true`|`一般都设置成true即可`
 |====
