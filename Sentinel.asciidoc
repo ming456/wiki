@@ -241,6 +241,8 @@ NOTE: 默认情况下，xml 格式是不支持的。需要添加 `jackson-datafo
 * Spring Boot 1.x 中添加配置 `management.security.enabled=false`。暴露的 endpoint 路径为 `/sentinel`
 * Spring Boot 2.x 中添加配置 `management.endpoints.web.exposure.include=*`。暴露的 endpoint 路径为 `/actuator/sentinel`
 
+Sentinel Endpoint 里暴露的信息非常有用。包括当前应用的所有规则信息、日志目录、当前实例的 IP，Sentinel Dashboard 地址，Block Page，应用与 Sentinel Dashboard 的心跳频率等等信息。
+
 ### More
 
 下表显示当应用的 `ApplicationContext` 中存在对应的Bean的类型时，会进行的一些操作：
@@ -251,6 +253,7 @@ NOTE: 默认情况下，xml 格式是不支持的。需要添加 `jackson-datafo
 ^|存在Bean的类型 ^|操作 ^|作用
 |`UrlCleaner`|`WebCallbackManager.setUrlCleaner(urlCleaner)`|资源清理(资源（比如将满足 /foo/:id 的 URL 都归到 /foo/* 资源下）)
 |`UrlBlockHandler`|`WebCallbackManager.setUrlBlockHandler(urlBlockHandler)`|自定义限流处理逻辑
+|`RequestOriginParser`|`WebCallbackManager.setRequestOriginParser(requestOriginParser)`|设置来源信息
 |====
 
 下表显示 Spring Cloud Alibaba Sentinel 的所有配置信息：
