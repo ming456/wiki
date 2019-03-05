@@ -217,9 +217,9 @@ spring.cloud.sentinel.datasource.ds5.apollo.rule-type=param-flow
 
 NOTE: d1, ds2, ds3, ds4 是 `ReadableDataSource` 的名字，可随意编写。后面的 `file` ，`zk` ，`nacos` , `apollo` 就是对应具体的数据源。 它们后面的配置就是这些具体数据源各自的配置。
 
-每种数据源都有 3 个共同的配置项： `data-type`、 `converter-class` 以及 `rule-type`。
+每种数据源都有两个共同的配置项： `data-type`、 `converter-class` 以及 `rule-type`。
 
-`data-type` 配置项表示 `Converter` 类型，Spring Cloud Alibaba Sentinel 默认提供两种内置的值，分别是 `json` 和 `xml` (不填默认是json)。 如果不想使用内置的 `json` 或 `xml` 这两种 `Converter`，可以填写 `custom` 表示自定义 `Converter`，然后再配置 `converter-class` 配置项，该配置项需要写类的全路径名。
+`data-type` 配置项表示 `Converter` 类型，Spring Cloud Alibaba Sentinel 默认提供两种内置的值，分别是 `json` 和 `xml` (不填默认是json)。 如果不想使用内置的 `json` 或 `xml` 这两种 `Converter`，可以填写 `custom` 表示自定义 `Converter`，然后再配置 `converter-class` 配置项，该配置项需要写类的全路径名(比如 `spring.cloud.sentinel.datasource.ds1.file.converter-class=org.springframework.cloud.alibaba.cloud.examples.JsonFlowRuleListConverter`)。
 
 `rule-type` 配置表示该数据源中的规则属于哪种类型的规则(`flow`，`degrade`，`authority`，`system`, `param-flow`)。
 
@@ -272,6 +272,7 @@ Sentinel Endpoint 里暴露的信息非常有用。包括当前应用的所有�
 |`spring.cloud.sentinel.transport.client-ip`|客户端IP|
 |`spring.cloud.sentinel.filter.order`|Servlet Filter的加载顺序。Starter内部会构造这个filter|Integer.MIN_VALUE
 |`spring.cloud.sentinel.filter.url-patterns`|数据类型是数组。表示Servlet Filter的url pattern集合|/*
+|`spring.cloud.sentinel.filter.enabled`|Enable to instance CommonFilter|true
 |`spring.cloud.sentinel.metric.charset`|metric文件字符集|UTF-8
 |`spring.cloud.sentinel.metric.file-single-size`|Sentinel metric 单个文件的大小|
 |`spring.cloud.sentinel.metric.file-total-count`|Sentinel metric 总文件数量|
