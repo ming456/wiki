@@ -57,9 +57,10 @@ Spring Cloud Alibaba BOM 包含了它所使用的所有依赖的版本。
 
 NOTE: 请注意， BUILD-SNAPSHOT 版本随时可能更新	
 
-==== Spring Cloud Finchley
 
-如果需要使用 Spring Cloud Finchley 版本，请在 dependencyManagement 中添加如下内容
+==== Spring Cloud Greenwich
+
+如果需要使用 Spring Cloud Greenwich 版本，请在 dependencyManagement 中添加如下内容
 
 [source,xml]
 ----
