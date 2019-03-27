@@ -67,12 +67,27 @@ NOTE: 请注意， BUILD-SNAPSHOT 版本随时可能更新
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-            <version>0.2.2.BUILD-SNAPSHOT</version>
+            <version>2.1.0.BUILD-SNAPSHOT</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
 ----
 
+
+==== Spring Cloud Finchley
+
+如果需要使用 Spring Cloud Finchley 版本，请在 dependencyManagement 中添加如下内容
+
+[source,xml]
+----
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+            <version>2.0.0.BUILD-SNAPSHOT</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+----
 
 ==== Spring Cloud Edgware
 
@@ -83,7 +98,7 @@ NOTE: 请注意， BUILD-SNAPSHOT 版本随时可能更新
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-            <version>0.1.2.BUILD-SNAPSHOT</version>
+            <version>1.5.0.BUILD-SNAPSHOT</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
