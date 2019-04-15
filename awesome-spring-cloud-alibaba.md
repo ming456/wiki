@@ -8,3 +8,5 @@
 - [SpringCloud 构建微服务系统之服务注册和发现（nacos）by 「请叫我小东子」](https://blog.csdn.net/u010046908/article/details/85260717)
 - [microservices-with-spring-cloud-alibaba by「Piotr Mińkowski」](https://dzone.com/articles/microservices-with-spring-cloud-alibaba)
 - [Spring Tips: Bootiful Alibaba by「Josh Long」 ](https://spring.io/blog/2018/12/26/spring-tips-bootiful-alibaba)
+- [干货｜Spring Cloud Stream 体系及原理介绍 by 「阿里巴巴-洛夜」](https://mp.weixin.qq.com/s?__biz=MzU4NzU0MDIzOQ==&mid=2247486235&idx=4&sn=03a0468424a2987becf9bc20feb01f55&chksm=fdeb397bca9cb06ddca880f305f1019ba7a2734c340987cfc1ef04a58eb4a5226dd25ce66edd&scene=21#wechat_redirect)
+- [干货｜Spring Cloud Bus 消息总线介绍 by 「阿里巴巴-洛夜」](https://mp.weixin.qq.com/s/QwIaK6LMlKyTzMKrbAEDcw)
