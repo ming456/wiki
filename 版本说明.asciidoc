@@ -10,13 +10,13 @@ Spring Cloud Alibaba BOM 包含了它所使用的所有依赖的版本。
 
 [source,xml]
 ----
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-            <version>0.9.0.RELEASE</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+    <version>0.9.0.RELEASE</version>
+    <type>pom</type>
+    <scope>import</scope>
+</dependency>
 ----
 
 ==== Spring Cloud Finchley
@@ -25,13 +25,13 @@ Spring Cloud Alibaba BOM 包含了它所使用的所有依赖的版本。
 
 [source,xml]
 ----
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-            <version>0.2.2.RELEASE</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+    <version>0.2.2.RELEASE</version>
+    <type>pom</type>
+    <scope>import</scope>
+</dependency>
 ----
 
 
@@ -41,13 +41,13 @@ Spring Cloud Alibaba BOM 包含了它所使用的所有依赖的版本。
 
 [source,xml]
 ----
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-            <version>0.1.2.RELEASE</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+    <version>0.1.2.RELEASE</version>
+    <type>pom</type>
+    <scope>import</scope>
+</dependency>
 ----
 
 === BUILD-SNAPSHOT 版本
@@ -56,16 +56,16 @@ Spring Cloud Alibaba BOM 包含了它所使用的所有依赖的版本。
 
 [source,xml]
 ----
-    <repositories>
-        <repository>
-            <id>spring-snapshot</id>
-            <name>Spring Snapshot Repository</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+<repositories>
+    <repository>
+        <id>spring-snapshot</id>
+        <name>Spring Snapshot Repository</name>
+        <url>https://repo.spring.io/snapshot</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+</repositories>
 ----
 
 NOTE: 请注意， BUILD-SNAPSHOT 版本随时可能更新	
@@ -77,13 +77,13 @@ NOTE: 请注意， BUILD-SNAPSHOT 版本随时可能更新
 
 [source,xml]
 ----
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-            <version>0.9.1.BUILD-SNAPSHOT</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+    <version>0.9.1.BUILD-SNAPSHOT</version>
+    <type>pom</type>
+    <scope>import</scope>
+</dependency>
 ----
 
 
@@ -93,13 +93,13 @@ NOTE: 请注意， BUILD-SNAPSHOT 版本随时可能更新
 
 [source,xml]
 ----
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-            <version>0.2.3.BUILD-SNAPSHOT</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+    <version>0.2.3.BUILD-SNAPSHOT</version>
+    <type>pom</type>
+    <scope>import</scope>
+</dependency>
 ----
 
 ==== Spring Cloud Edgware
@@ -108,11 +108,11 @@ NOTE: 请注意， BUILD-SNAPSHOT 版本随时可能更新
 
 [source,xml]
 ----
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-            <version>0.1.2.BUILD-SNAPSHOT</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+    <version>0.1.2.BUILD-SNAPSHOT</version>
+    <type>pom</type>
+    <scope>import</scope>
+</dependency>
 ----
