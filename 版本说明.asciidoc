@@ -1,3 +1,14 @@
+== 版本依赖关系
+
+:frame: topbot
+[width="60%",options="header"]
+|====
+^|Spring Cloud Version ^|Spring Cloud Alibaba Version ^|Spring Boot Version
+|Spring Cloud Greenwich|0.9.0.RELEASE|2.1.X.RELEASE
+|Spring Cloud Finchley|0.2.X.RELEASE|2.1.X.RELEASE
+|Spring Cloud Edgware|0.1.X.RELEASE|2.1.X.RELEASE
+|====
+
 == 依赖管理
 
 Spring Cloud Alibaba BOM 包含了它所使用的所有依赖的版本。
