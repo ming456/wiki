@@ -16,7 +16,6 @@ Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。�
    - [RocketMQ](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/RocketMQ)
 - 商业化组件
    - [ANS](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/ANS)
-   - [Eureka 向 ANS 平滑迁移](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/Eureka-%E5%90%91-ANS-%E8%BF%81%E7%A7%BB)
    - [ACM](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/ACM)
    - [OSS](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/OSS)
    - [SchedulerX](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/SchedulerX)
