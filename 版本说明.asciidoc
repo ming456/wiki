@@ -5,8 +5,8 @@
 |====
 ^|Spring Cloud Version ^|Spring Cloud Alibaba Version ^|Spring Boot Version
 |Spring Cloud Greenwich|0.9.0.RELEASE|2.1.X.RELEASE
-|Spring Cloud Finchley|0.2.X.RELEASE|2.1.X.RELEASE
-|Spring Cloud Edgware|0.1.X.RELEASE|2.1.X.RELEASE
+|Spring Cloud Finchley|0.2.X.RELEASE|2.0.X.RELEASE
+|Spring Cloud Edgware|0.1.X.RELEASE|1.5.X.RELEASE
 |====
 
 == 依赖管理
