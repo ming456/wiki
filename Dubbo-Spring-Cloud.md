@@ -26,7 +26,7 @@ Dubbo Spring Cloud 首个 Preview Release，随同 Spring Cloud Alibaba `0.2.2.R
 
 ## 快速上手
 
-Dubbo Spring Cloud 能够
+TODO
 
 
 
