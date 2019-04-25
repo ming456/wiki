@@ -6,6 +6,7 @@
    - [Nacos Discovery](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/Nacos-discovery)
    - [Sentinel](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/Sentinel)
    - [RocketMQ](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/RocketMQ)
+   - [Dubbo Spring Cloud](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/Dubbo-Spring-Cloud)
 - 商业化组件
    - [ANS](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/ANS)
    - [ACM](https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/ACM)
