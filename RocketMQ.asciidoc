@@ -166,6 +166,60 @@ Message message = builder.build();
 output().send(message);
 ```
 
+### MessageSource 支持
+
+目前 RocketMQ 已经支持 `MessageSource`，可以进行消息的拉取，例子如下：
+
+```java
+@SpringBootApplication
+@EnableBinding(MQApplication.PolledProcessor.class)
+public class MQApplication {
+
+  private final Logger logger =
+  	  LoggerFactory.getLogger(MQApplication.class);
+
+  public static void main(String[] args) {
+    SpringApplication.run(MQApplication.class, args);
+  }
+
+  @Bean
+  public ApplicationRunner runner(PollableMessageSource source,
+  	    MessageChannel dest) {
+    return args -> {
+      while (true) {
+        boolean result = source.poll(m -> {
+          String payload = (String) m.getPayload();
+          logger.info("Received: " + payload);
+          dest.send(MessageBuilder.withPayload(payload.toUpperCase())
+              .copyHeaders(m.getHeaders())
+              .build());
+        }, new ParameterizedTypeReference<String>() { });
+        if (result) {
+          logger.info("Processed a message");
+        }
+        else {
+          logger.info("Nothing to do");
+        }
+        Thread.sleep(5_000);
+      }
+    };
+  }
+
+  public static interface PolledProcessor {
+
+    @Input
+    PollableMessageSource source();
+
+    @Output
+    MessageChannel dest();
+
+  }
+
+}
+```
+
+
+
 ### 配置选项
 
 #### RocketMQ Binder Properties
