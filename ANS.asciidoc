@@ -6,7 +6,7 @@ NOTE: 目前 EDAS 以及支持直接部署 Nacos Discovery 应用
 
 === 如何引入 Spring Cloud AliCloud ANS
 
-如果要在您的项目中使用 Nacos 来实现服务发现，使用 group ID 为 org.springframework.cloud 和 artifact ID 为 spring-cloud-starter-alicloud-ans 的 starter。
+如果要在您的项目中使用 ANS 来实现服务发现，使用 group ID 为 org.springframework.cloud 和 artifact ID 为 spring-cloud-starter-alicloud-ans 的 starter。
 
 [source,xml]
 ----
