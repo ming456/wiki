@@ -9,6 +9,17 @@
 |Spring Cloud Edgware|0.1.X.RELEASE|1.5.X.RELEASE
 |====
 
+== 客户端版本关系
+
+:frame: topbot
+[width="60%",options="header"]
+|====
+^|Spring Cloud Alibaba Version ^|Sentinel Version ^|Nacos Version ^| RocketMQ Version ^| Dubbo Version ^| Seata Version
+|0.9.0.RELEASE or 0.2.2.RELEASE or 0.1.2.RELEASE |1.5.2|1.0.0|4.4.0|2.7.1|0.4.2
+|0.2.1.RELEASE or 0.1.1.RELEASE |1.4.0|0.6.2|4.3.1|❌| ❌
+|0.2.0.RELEASE or 0.1.0.RELEASE |1.3.0-GA|0.3.0|❌|❌| ❌
+|====
+
 == 依赖管理
 
 Spring Cloud Alibaba BOM 包含了它所使用的所有依赖的版本。
