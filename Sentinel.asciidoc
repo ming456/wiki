@@ -103,7 +103,7 @@ spring:
 Sentinel 适配了 https://github.com/OpenFeign/feign[Feign] 组件。如果想使用，除了引入 `sentinel-starter` 的依赖外还需要 2 个步骤：
 
 * 配置文件打开 sentinel 对 feign 的支持：`feign.sentinel.enabled=true`
-* 加入 `feign starter` 依赖触发 `sentinel starter` 的配置类生效：
+* 加入 `openfeign starter` 依赖使 `sentinel starter` 中的自动化配置类生效：
 ```xml
 <dependency>
     <groupId>org.springframework.cloud</groupId>
@@ -175,11 +175,11 @@ NOTE: 应用启动的时候会检查 `@SentinelRestTemplate` 注解对应的限�
 
 Sentinel RestTemplate 限流的资源规则提供两种粒度：
 
-* `schema://host:port/path`：协议、主机、端口和路径
+* `httpmethod:schema://host:port/path`：协议、主机、端口和路径
 
-* `schema://host:port`：协议、主机和端口
+* `httpmethod:schema://host:port`：协议、主机和端口
 
-NOTE: 以 `https://www.taobao.com/test` 这个 url 为例。对应的资源名有两种粒度，分别是 `https://www.taobao.com` 以及 `https://www.taobao.com/test`
+NOTE: 以 `https://www.taobao.com/test` 这个 url 并使用 GET 方法为例。对应的资源名有两种粒度，分别是 `GET:https://www.taobao.com` 以及 `GET:https://www.taobao.com/test`
 
 ### 动态数据源支持
 
@@ -197,8 +197,8 @@ spring.cloud.sentinel.datasource.ds1.file.rule-type=flow
 #spring.cloud.sentinel.datasource.ds1.file.rule-type=flow
 
 spring.cloud.sentinel.datasource.ds2.nacos.server-addr=localhost:8848
-spring.cloud.sentinel.datasource.ds2.nacos.dataId=sentinel
-spring.cloud.sentinel.datasource.ds2.nacos.groupId=DEFAULT_GROUP
+spring.cloud.sentinel.datasource.ds2.nacos.data-id=sentinel
+spring.cloud.sentinel.datasource.ds2.nacos.group-id=DEFAULT_GROUP
 spring.cloud.sentinel.datasource.ds2.nacos.data-type=json
 spring.cloud.sentinel.datasource.ds2.nacos.rule-type=degrade
 
@@ -209,7 +209,7 @@ spring.cloud.sentinel.datasource.ds3.zk.rule-type=authority
 spring.cloud.sentinel.datasource.ds4.apollo.namespace-name = application
 spring.cloud.sentinel.datasource.ds4.apollo.flow-rules-key = sentinel
 spring.cloud.sentinel.datasource.ds4.apollo.default-flow-rule-value = test
-spring.cloud.sentinel.datasource.ds5.apollo.rule-type=param-flow
+spring.cloud.sentinel.datasource.ds4.apollo.rule-type=param-flow
 
 ```
 
@@ -221,7 +221,7 @@ NOTE: d1, ds2, ds3, ds4 是 `ReadableDataSource` 的名字，可随意编写。�
 
 `data-type` 配置项表示 `Converter` 类型，Spring Cloud Alibaba Sentinel 默认提供两种内置的值，分别是 `json` 和 `xml` (不填默认是json)。 如果不想使用内置的 `json` 或 `xml` 这两种 `Converter`，可以填写 `custom` 表示自定义 `Converter`，然后再配置 `converter-class` 配置项，该配置项需要写类的全路径名(比如 `spring.cloud.sentinel.datasource.ds1.file.converter-class=org.springframework.cloud.alibaba.cloud.examples.JsonFlowRuleListConverter`)。
 
-`rule-type` 配置表示该数据源中的规则属于哪种类型的规则(`flow`，`degrade`，`authority`，`system`, `param-flow`)。
+`rule-type` 配置表示该数据源中的规则属于哪种类型的规则(`flow`，`degrade`，`authority`，`system`, `param-flow`, `gw-flow`, `gw-api-group`)。
 
 如果数据源生效并且规则成功加载，控制台会打印类似如下信息：
 
@@ -235,6 +235,42 @@ NOTE: 当某个数据源规则信息加载失败的情况下，不会影响应�
 NOTE: 默认情况下，xml 格式是不支持的。需要添加 `jackson-dataformat-xml` 依赖后才会自动生效。
 
 关于 Sentinel 动态数据源的实现原理，参考： https://github.com/alibaba/Sentinel/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95[动态规则扩展]
+
+### Zuul 支持
+
+https://github.com/alibaba/Sentinel/wiki/%E7%BD%91%E5%85%B3%E9%99%90%E6%B5%81[参考 Sentinel 网关限流]
+
+若想跟 Sentinel Starter 配合使用，需要加上 `spring-cloud-alibaba-sentinel-gateway` 依赖，同时需要添加 `spring-cloud-starter-netflix-zuul` 依赖来让 `spring-cloud-alibaba-sentinel-gateway` 模块里的 Zuul 自动化配置类生效：
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+</dependency>
+```
+
+### Spring Cloud Gateway 支持
+
+https://github.com/alibaba/Sentinel/wiki/%E7%BD%91%E5%85%B3%E9%99%90%E6%B5%81[参考 Sentinel 网关限流]
+
+若想跟 Sentinel Starter 配合使用，需要加上 `spring-cloud-alibaba-sentinel-gateway` 依赖，同时需要添加 `spring-cloud-starter-gateway` 依赖来让 `spring-cloud-alibaba-sentinel-gateway` 模块里的 Spring Cloud Gateway 自动化配置类生效：
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-gateway</artifactId>
+</dependency>
+```
 
 ### Endpoint 支持
 
