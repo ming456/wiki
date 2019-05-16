@@ -51,6 +51,31 @@ public class TestController {
 
 @SentinelResource 还提供了其它额外的属性如 `blockHandler`，`blockHandlerClass`，`fallback` 用于表示限流或降级的操作，更多内容可以参考 https://github.com/alibaba/Sentinel/wiki/%E6%B3%A8%E8%A7%A3%E6%94%AF%E6%8C%81[Sentinel注解支持]。
 
+以上例子都是在 WebServlet 环境下使用的，Sentinel 目前已经支持 WebFlux，需要配合 `spring-boot-starter-webflux` 依赖触发 sentinel-starter 中 WebFlux 相关的自动化配置。
+
+```java
+@SpringBootApplication
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(ServiceApplication.class, args);
+    }
+
+}
+
+@RestController
+public class TestController {
+
+    @GetMapping("/mono")
+    @SentinelResource("hello")
+    public Mono<String> mono() {
+	return Mono.just("simple string")
+			.transform(new SentinelReactorTransformer<>("otherResourceName"));
+    }
+
+}
+```
+
 ##### Sentinel 控制台
 
 Sentinel 控制台提供一个轻量级的控制台，它提供机器发现、单机资源实时监控、集群资源汇总，以及规则管理的功能。您只需要对应用进行简单的配置，就可以使用这些功能。
