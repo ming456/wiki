@@ -4,26 +4,11 @@ Spring Cloud AliCloud ACM 是阿里云提供的商业版应用配置管理(Appli
 
 Spring Cloud AliCloud ACM 是 Config Server 和 Client 的替代方案，客户端和服务器上的概念与 Spring Environment 和 PropertySource 有着一致的抽象，在特殊的 bootstrap 阶段，配置被加载到 Spring 环境中。当应用程序通过部署管道从开发到测试再到生产时，您可以管理这些环境之间的配置，并确保应用程序具有迁移时需要运行的所有内容。
 
+NOTE: 目前 EDAS 已经支持直接部署 Nacos Config 应用
+
 === 如何引入 Spring Cloud AliCloud ACM
 
-Spring Cloud Alibaba 已经发布了 0.2.2.BUILD-SNAPSHOT 版本，需要首先导入依赖管理 POM。
-
-[source,xml]
-----
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-            <version>0.2.2.BUILD-SNAPSHOT</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
-----
-
-并引入 Spring Cloud AliCloud ACM Starter 依赖。
+如果要在您的项目中使用 ACM 来实现应用的外部化配置，使用 group ID 为 org.springframework.cloud 和 artifact ID 为 spring-cloud-starter-alicloud-acm 的 starter。
 
 [source,xml]
 ----
