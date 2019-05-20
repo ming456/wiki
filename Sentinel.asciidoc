@@ -351,7 +351,11 @@ Sentinel Endpoint 里暴露的信息非常有用。包括当前应用的所有�
 |`spring.cloud.sentinel.log.dir`|Sentinel 日志文件所在的目录|
 |`spring.cloud.sentinel.log.switch-pid`|Sentinel 日志文件名是否需要带上pid|false
 |`spring.cloud.sentinel.servlet.block-page`| 自定义的跳转 URL，当请求被限流时会自动跳转至设定好的 URL |
-|`spring.cloud.sentinel.flow.cold-factor`| https://github.com/alibaba/Sentinel/wiki/%E9%99%90%E6%B5%81---%E5%86%B7%E5%90%AF%E5%8A%A8[冷启动因子] |3
+|`spring.cloud.sentinel.flow.cold-factor`| https://github.com/alibaba/Sentinel/wiki/%E9%99%90%E6%B5%81---
+%E5%86%B7%E5%90%AF%E5%8A%A8[冷启动因子] |3
+|`spring.cloud.sentinel.zuul.order.pre`| SentinelZuulPreFilter 的 order | 10000
+|`spring.cloud.sentinel.zuul.order.post`| SentinelZuulPostFilter 的 order | 1000
+|`spring.cloud.sentinel.zuul.order.error`| SentinelZuulErrorFilter 的 order | -1
 |====
 
 NOTE: 请注意。这些配置只有在 Servlet 环境下才会生效，RestTemplate 和 Feign 针对这些配置都无法生效
