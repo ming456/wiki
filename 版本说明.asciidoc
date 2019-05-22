@@ -9,7 +9,7 @@
 |Spring Cloud Edgware|0.1.X.RELEASE|1.5.X.RELEASE
 |====
 
-== 客户端版本关系
+== 组件版本关系
 
 :frame: topbot
 [width="60%",options="header"]
