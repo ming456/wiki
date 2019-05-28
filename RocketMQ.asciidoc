@@ -341,5 +341,5 @@ spring.cloud.stream.rocketmq.binder.secret-key=YourSecretKey
 spring.cloud.stream.rocketmq.binder.name-server=NameServerInMQ
 ```
 
-.NameServer 的获取
+.NameServer 的获取(配置中请去掉 http:// 前缀)
 image::https://spring-cloud-alibaba.oss-cn-beijing.aliyuncs.com/MQ.png[]
