@@ -9,6 +9,8 @@
 |Spring Cloud Edgware|0.1.X.RELEASE|1.5.X.RELEASE
 |====
 
+NOTE: 请注意， Spring Cloud Edgware 最低支持 Edgware.SR5 版本
+
 == 组件版本关系
 
 :frame: topbot
