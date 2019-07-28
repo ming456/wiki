@@ -248,13 +248,6 @@ NOTE: d1, ds2, ds3, ds4 是 `ReadableDataSource` 的名字，可随意编写。�
 
 `rule-type` 配置表示该数据源中的规则属于哪种类型的规则(`flow`，`degrade`，`authority`，`system`, `param-flow`, `gw-flow`, `gw-api-group`)。
 
-如果数据源生效并且规则成功加载，控制台会打印类似如下信息：
-
-```
-[Sentinel Starter] DataSource ds1-sentinel-file-datasource load 3 DegradeRule
-[Sentinel Starter] DataSource ds2-sentinel-nacos-datasource load 2 FlowRule
-```
-
 NOTE: 当某个数据源规则信息加载失败的情况下，不会影响应用的启动，会在日志中打印出错误信息。
 
 NOTE: 默认情况下，xml 格式是不支持的。需要添加 `jackson-dataformat-xml` 依赖后才会自动生效。
@@ -316,9 +309,9 @@ https://github.com/alibaba/Sentinel/wiki/%E7%BD%91%E5%85%B3%E9%99%90%E6%B5%81[�
 
 Sentinel Endpoint 里暴露的信息非常有用。包括当前应用的所有规则信息、日志目录、当前实例的 IP，Sentinel Dashboard 地址，Block Page，应用与 Sentinel Dashboard 的心跳频率等等信息。
 
-### More
+### 配置
 
-下表显示当应用的 `ApplicationContext` 中存在对应的Bean的类型时，会进行的一些操作：
+下表显示当应用的 `ApplicationContext` 中存在对应的Bean的类型时，会进行自动化设置：
 
 :frame: topbot
 [width="60%",options="header"]
@@ -329,7 +322,7 @@ Sentinel Endpoint 里暴露的信息非常有用。包括当前应用的所有�
 |`RequestOriginParser`|`WebCallbackManager.setRequestOriginParser(requestOriginParser)`|设置来源信息
 |====
 
-下表显示 Spring Cloud Alibaba Sentinel 的所有配置信息：
+Spring Cloud Alibaba Sentinel 提供了这些配置选项:
 
 :frame: topbot
 [width="60%",options="header"]
@@ -356,6 +349,11 @@ Sentinel Endpoint 里暴露的信息非常有用。包括当前应用的所有�
 |`spring.cloud.sentinel.zuul.order.pre`| SentinelZuulPreFilter 的 order | 10000
 |`spring.cloud.sentinel.zuul.order.post`| SentinelZuulPostFilter 的 order | 1000
 |`spring.cloud.sentinel.zuul.order.error`| SentinelZuulErrorFilter 的 order | -1
+|`spring.cloud.sentinel.scg.fallback.mode`| Spring Cloud Gateway 熔断后的响应模式(选择 `redirect` or `response`) | 
+|`spring.cloud.sentinel.scg.fallback.redirect`| Spring Cloud Gateway 响应模式为 'redirect' 模式对应的重定向 URL |
+|`spring.cloud.sentinel.scg.fallback.response-body`| Spring Cloud Gateway 响应模式为 'response' 模式对应的响应内容 |
+|`spring.cloud.sentinel.scg.fallback.response-status`| Spring Cloud Gateway 响应模式为 'response' 模式对应的响应码 | 429
+|`spring.cloud.sentinel.scg.fallback.content-type`| Spring Cloud Gateway 响应模式为 'response' 模式对应的 content-type | application/json
 |====
 
 NOTE: 请注意。这些配置只有在 Servlet 环境下才会生效，RestTemplate 和 Feign 针对这些配置都无法生效
