@@ -34,4 +34,4 @@
 	- [RocketMQ](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/rocketmq-example/readme-zh.md)
 	- [OSS](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/oss-example/readme-zh.md)
 	- [SMS](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/sms-example/readme-zh.md)
-	- [awesome spring cloud alibaba](https://github.com/alibaba/spring-cloud-alibaba/wiki/awesome-spring-cloud-alibaba)
+- [awesome spring cloud alibaba](https://github.com/alibaba/spring-cloud-alibaba/wiki/awesome-spring-cloud-alibaba)
