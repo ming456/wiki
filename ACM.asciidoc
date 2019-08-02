@@ -8,12 +8,12 @@ NOTE: 目前 EDAS 已经支持直接部署 Nacos Config 应用
 
 === 如何引入 Spring Cloud AliCloud ACM
 
-如果要在您的项目中使用 ACM 来实现应用的外部化配置，使用 group ID 为 org.springframework.cloud 和 artifact ID 为 spring-cloud-starter-alicloud-acm 的 starter。
+如果要在您的项目中使用 ACM 来实现应用的外部化配置，使用 group ID 为 com.alibaba.cloud 和 artifact ID 为 spring-cloud-starter-alicloud-acm 的 starter。
 
 [source,xml]
 ----
 <dependency>
-    <groupId>org.springframework.cloud</groupId>
+    <groupId>com.alibaba.cloud</groupId>
     <artifactId>spring-cloud-starter-alicloud-acm</artifactId>
 </dependency>
 ----
