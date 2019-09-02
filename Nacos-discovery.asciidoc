@@ -281,6 +281,7 @@ NOTE: 在启动 Consumer 应用之前请先将 Nacos 服务启动好。具体启
 ^|配置项 ^|Key ^|默认值 ^|说明
 |`服务端地址`|`spring.cloud.nacos.discovery.server-addr`|`无`| `Nacos Server 启动监听的ip地址和端口`
 |`服务名`|`spring.cloud.nacos.discovery.service`|`${spring.application.name}`|`给当前的服务命名`
+|`服务分组`|`spring.cloud.nacos.discovery.group`|`DEFAULT_GROUP`|`设置服务所处的分组`
 |`权重`|`spring.cloud.nacos.discovery.weight`|`1`|`取值范围 1 到 100，数值越大，权重越大`
 |`网卡名`|`spring.cloud.nacos.discovery.network-interface`|`无`|`当IP未配置时，注册的IP为此网卡所对应的IP地址，如果此项也未配置，则默认取第一块网卡的地址`
 |`注册的IP地址`|`spring.cloud.nacos.discovery.ip`|`无`|`优先级最高`
