@@ -125,10 +125,11 @@ spring:
 
 ### Feign 支持
 
-Sentinel 适配了 https://github.com/OpenFeign/feign[Feign] 组件。如果想使用，除了引入 `sentinel-starter` 的依赖外还需要 2 个步骤：
+Sentinel 适配了 https://github.com/OpenFeign/feign[Feign] 组件。如果想使用，除了引入 `spring-cloud-starter-alibaba-sentinel` 的依赖外还需要 2 个步骤：
 
-* 配置文件打开 sentinel 对 feign 的支持：`feign.sentinel.enabled=true`
+* 配置文件打开 Sentinel 对 Feign 的支持：`feign.sentinel.enabled=true`
 * 加入 `openfeign starter` 依赖使 `sentinel starter` 中的自动化配置类生效：
+
 ```xml
 <dependency>
     <groupId>org.springframework.cloud</groupId>
