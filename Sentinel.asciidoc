@@ -47,11 +47,11 @@ public class TestController {
 }
 ```
 
-@SentinelResource 注解用来标识资源是否被限流、降级。上述例子上该注解的属性 'hello' 表示资源名。
+`@SentinelResource` 注解用来标识资源是否被限流、降级。上述例子上该注解的属性 'hello' 表示资源名。
 
 @SentinelResource 还提供了其它额外的属性如 `blockHandler`，`blockHandlerClass`，`fallback` 用于表示限流或降级的操作，更多内容可以参考 https://github.com/alibaba/Sentinel/wiki/%E6%B3%A8%E8%A7%A3%E6%94%AF%E6%8C%81[Sentinel注解支持]。
 
-以上例子都是在 WebServlet 环境下使用的，Sentinel 目前已经支持 WebFlux，需要配合 `spring-boot-starter-webflux` 依赖触发 sentinel-starter 中 WebFlux 相关的自动化配置。
+以上例子都是在 WebServlet 环境下使用的，Sentinel 目前已经支持 Spring WebFlux，需要配合 `spring-boot-starter-webflux` 依赖触发 sentinel-starter 中 WebFlux 相关的自动化配置。
 
 ```java
 @SpringBootApplication
@@ -83,7 +83,7 @@ Sentinel 控制台提供一个轻量级的控制台，它提供机器发现、�
 *注意*: 集群资源汇总仅支持 500 台以下的应用集群，有大概 1 - 2 秒的延时。
 
 .Sentinel Dashboard
-image::https://github.com/alibaba/Sentinel/wiki/image/dashboard.png[]
+image::https://user-images.githubusercontent.com/9434884/50678855-aa6e9700-103b-11e9-83de-2a33e580325f.png[]
 
 开启该功能需要3个步骤：
 
