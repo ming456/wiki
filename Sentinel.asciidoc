@@ -51,7 +51,9 @@ public class TestController {
 
 `@SentinelResource` 还提供了其它额外的属性如 `blockHandler`，`blockHandlerClass`，`fallback` 用于表示限流或降级的操作（注意有方法签名要求），更多内容可以参考 https://github.com/alibaba/Sentinel/wiki/%E6%B3%A8%E8%A7%A3%E6%94%AF%E6%8C%81[Sentinel 注解支持文档]。
 
-以上例子都是在 WebServlet 环境下使用的，Sentinel 目前已经支持 Spring WebFlux，需要配合 `spring-boot-starter-webflux` 依赖触发 sentinel-starter 中 WebFlux 相关的自动化配置。
+> 注：一般推荐将 `@SentinelResource` 注解加到服务上，而在 Web 层直接使用 Spring Cloud Alibaba 自带的 Web 适配埋点。Sentinel Web 适配支持配置自定义流控处理逻辑，参考 https://github.com/alibaba/Sentinel/wiki/主流框架的适配#web-适配[相关文档]。
+
+以上例子都是在 Web Servlet 环境下使用的。Sentinel 目前已经支持 Spring WebFlux，需要配合 `spring-boot-starter-webflux` 依赖触发 sentinel-starter 中 WebFlux 相关的自动化配置。
 
 ```java
 @SpringBootApplication
@@ -69,14 +71,11 @@ public class TestController {
     @GetMapping("/mono")
     @SentinelResource("hello")
     public Mono<String> mono() {
-	return Mono.just("simple string")
-			.transform(new SentinelReactorTransformer<>("otherResourceName"));
+	return Mono.just("simple string");
     }
 
 }
 ```
-
-一般推荐将 `@SentinelResource` 注解加到服务上，在 Web 层直接使用 Spring Cloud Alibaba 自带的 Web 适配埋点。
 
 ##### Sentinel 控制台
 
@@ -347,14 +346,13 @@ Spring Cloud Alibaba Sentinel 提供了这些配置选项:
 |`spring.cloud.sentinel.metric.file-single-size`|Sentinel metric 单个文件的大小|
 |`spring.cloud.sentinel.metric.file-total-count`|Sentinel metric 总文件数量|
 |`spring.cloud.sentinel.log.dir`|Sentinel 日志文件所在的目录|
-|`spring.cloud.sentinel.log.switch-pid`|Sentinel 日志文件名是否需要带上pid|false
+|`spring.cloud.sentinel.log.switch-pid`|Sentinel 日志文件名是否需要带上 pid|false
 |`spring.cloud.sentinel.servlet.block-page`| 自定义的跳转 URL，当请求被限流时会自动跳转至设定好的 URL |
-|`spring.cloud.sentinel.flow.cold-factor`| https://github.com/alibaba/Sentinel/wiki/%E9%99%90%E6%B5%81---
-%E5%86%B7%E5%90%AF%E5%8A%A8[冷启动因子] |3
+|`spring.cloud.sentinel.flow.cold-factor`| WarmUp 模式中的 冷启动因子 |3
 |`spring.cloud.sentinel.zuul.order.pre`| SentinelZuulPreFilter 的 order | 10000
 |`spring.cloud.sentinel.zuul.order.post`| SentinelZuulPostFilter 的 order | 1000
 |`spring.cloud.sentinel.zuul.order.error`| SentinelZuulErrorFilter 的 order | -1
-|`spring.cloud.sentinel.scg.fallback.mode`| Spring Cloud Gateway 熔断后的响应模式(选择 `redirect` or `response`) | 
+|`spring.cloud.sentinel.scg.fallback.mode`| Spring Cloud Gateway 流控处理逻辑 (选择 `redirect` or `response`) | 
 |`spring.cloud.sentinel.scg.fallback.redirect`| Spring Cloud Gateway 响应模式为 'redirect' 模式对应的重定向 URL |
 |`spring.cloud.sentinel.scg.fallback.response-body`| Spring Cloud Gateway 响应模式为 'response' 模式对应的响应内容 |
 |`spring.cloud.sentinel.scg.fallback.response-status`| Spring Cloud Gateway 响应模式为 'response' 模式对应的响应码 | 429
