@@ -2,15 +2,15 @@
 
 ### Introduction of Sentinel
 
-As microservices become popular, the stability of service calls is becoming increasingly important. https://github.com/alibaba/Sentinel[Sentinel] takes "flow" as the breakthrough point, and works on multiple fields including flow control, circuit breaking and load protection to protect service reliability.
+As distributed systems become increasingly popular, the reliability between services is becoming more important than ever before. https://github.com/alibaba/Sentinel[Sentinel] takes "flow" as the breakthrough point, and works on multiple fields including **flow control**, **circuit breaking** and **system adaptive protection**, to guarantee the reliability of microservices.
 
 https://github.com/alibaba/Sentinel[Sentinel] has the following features:
 
+* **Rich applicable scenarios**: Sentinel has been wildly used in Alibaba, and has covered almost all the core-scenarios in Double-11 (11.11) Shopping Festivals in the past 10 years, such as “Second Kill” which needs to limit burst flow traffic to meet the system capacity, message peak clipping and valley fills, circuit breaking for unreliable downstream services, cluster flow control, etc.
+* **Real-time monitoring**: Sentinel also provides real-time monitoring ability. You can see the runtime information of a single machine in real-time, and the aggregated runtime info of a cluster with less than 500 nodes.
+* **Widespread open-source ecosystem**: Sentinel provides out-of-box integrations with commonly-used frameworks and libraries such as Spring Cloud, Dubbo and gRPC. You can easily use Sentinel by simply add the adapter dependency to your services.
+* **Various SPI extensions**: Sentinel provides easy-to-use SPI extension interfaces that allow you to quickly customize your logic, for example, custom rule management, adapting data sources, and so on.
 
-* *Rich Scenarios*： Sentinel has supported the key scenarios of Alibaba’s Double 11 Shopping Festivals for over 10 years, such as second kill(i.e., controlling sudden bursts of traffic flow so that it’s within the acceptable range of the system capacity), message load shifting, circuit breaking of unreliable downstream applications.
-* *Comprehensive Real-Time Monitoring*： Sentinel provides real-time monitoring capability. You can see the monitoring data of your servers at the accuracy of seconds, and even the overall runtime status of a cluster with less than 500 nodes.
-* *Extensive Open-Source Ecosystem*： Sentinel provides out-of-box modules that can be easily integrated with other open-source frameworks/libraries, such as Spring Cloud, Dubbo, and gRPC. To use Sentinel, you only need to introduce the related dependency and make a few simple configurations.
-* *Sound SPI Extensions*： Sentinel provides easy-to-use and sound SPI extension interfaces. You can customize logics with the SPI extensions quickly, for example, you can define your own rule management, or adapt to specific data sources.
 
 ### How to Use Sentinel
 
@@ -49,7 +49,7 @@ public class TestController {
 
 The @SentinelResource annotation is used to identify if a resource is rate limited or degraded. In the above sample, the 'hello' attribute of the annotation refers to the resource name.
 
-@SentinelResource also provides attributes such as `blockHandler`, `blockHandlerClass`,  and `fallback` to identify rate limiting or degradation operations. For more details, refer to  https://github.com/alibaba/Sentinel/wiki/%E6%B3%A8%E8%A7%A3%E6%94%AF%E6%8C%81[Sentinel Annotation Support].
+@SentinelResource also provides attributes such as `blockHandler`, `blockHandlerClass`,  and `fallback` to identify the handler logic of flow control. For more details, refer to https://github.com/alibaba/Sentinel/tree/master/sentinel-extension/sentinel-annotation-aspectj[Sentinel Annotation Support].
 
 The above examples are all used in the WebServlet environment. Sentinel currently supports WebFlux and needs to cooperate with the `spring-boot-starter-webflux` dependency to trigger the WebFlux-related automation configuration in sentinel starter.
 
@@ -78,12 +78,15 @@ public class TestController {
 
 ##### Sentinel Dashboard
 
-Sentinel dashboard is a lightweight console that provides functions such as machine discovery, single-server resource monitoring, overview of cluster resource data, as well as rule management. To use these features, you only need to complete a few steps.
+Sentinel provides a simple stand-alone https://github.com/alibaba/Sentinel/wiki/Dashboard[dashboard], on which you can monitor your applications, and configure the rules in real-time. It includes the following features:
 
-*Note*: The statistics overview for clusters only supports clusters with less than 500 nodes, and has a latency of about 1 to 2 seconds.
+* Machine discovery
+* Real-time monitoring for a single machine or clusters with less than 500 nodes
+* Rule management
+* Token server/client management for cluster flow control
 
 .Sentinel Dashboard
-image::https://github.com/alibaba/Sentinel/wiki/image/dashboard.png[]
+image::https://user-images.githubusercontent.com/9434884/55449295-84866d80-55fd-11e9-94e5-d3441f4a2b63.png[]
 
 To use the Sentinel dashboard, simply complete the following 3 steps.
 
@@ -94,12 +97,12 @@ You can download the latest dashboard JAR file from the https://github.com/aliba
 You can also get the latest source code to build your own Sentinel dashboard：
 
 * Download the  https://github.com/alibaba/Sentinel/tree/master/sentinel-dashboard[Dashboard] project.
-* Run the following command to package the code into a FatJar: `mvn clean package`
+* Run the following command to package the code into a fat-jar: `mvn clean package` (`dashboard/en` branch to build English version)
 
 
 ###### Start the Dashboard
 
-Sentinel dashboard is a standard SpringBoot application, and you can run the JAR file in the Spring Boot mode.
+Sentinel dashboard is a standard Spring Boot application, and you can run the JAR file in the Spring Boot mode.
 
 ```shell
 java -Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard.jar
@@ -119,16 +122,17 @@ spring:
         dashboard: localhost:8080
 ----
 
-The port number specified in `spring.cloud.sentinel.transport.port` will start an HTTP Server on the corresponding server of the application, and this server will interact with the Sentinel dashboard. For example, if a rate limiting rule is added in the Sentinel dashboard, the the rule data will be pushed to and recieved by the HTTP Server, which in turn registers the rule to Sentinel.
+The port number specified in `spring.cloud.sentinel.transport.port` will start an HTTP Server on the corresponding server of the application, and this server will interact with the Sentinel dashboard. For example, if a rate limiting rule is added in the Sentinel dashboard, the rule data will be pushed to and received by the HTTP Server, which in turn registers the rule to Sentinel.
 
-For more information about Sentinel dashboard, please refer to https://github.com/alibaba/Sentinel/wiki/%E6%8E%A7%E5%88%B6%E5%8F%B0[Sentinel Dashboard].
+For more information about Sentinel dashboard, please refer to https://github.com/alibaba/Sentinel/wiki/Dashboard[Sentinel Dashboard].
 
 ### OpenFeign Support
 
 Sentinel is compatible with the https://github.com/OpenFeign/feign[OpenFeign] component. To use it, in addition to introducing the `sentinel-starter` dependency, complete the following 2 steps:
 
 * Enable the Sentinel support for feign in the properties file. `feign.sentinel.enabled=true`
-* Add the `openfeign starter` dependency to trigger and enable `sentinel starter`:
+* Add the `openfeign starter` dependency to trigger and enable the Sentinel starter:
+
 ```xml
 <dependency>
     <groupId>org.springframework.cloud</groupId>
@@ -160,7 +164,7 @@ class EchoServiceFallback implements EchoService {
 }
 ```
 
-NOTE: The resource name policy in the corresponding interface of Feign is：httpmethod:protocol://requesturl. All the attributes in the `@FeignClient` annotation is supported by Sentinel.
+NOTE: The resource name policy in the corresponding interface of Feign is：httpmethod:protocol://requesturl. All the attributes in the `@FeignClient` annotation are supported by Sentinel.
 
 The corresponding resource name of the `echo` method in the `EchoService` interface is `GET:http://service-provider/echo/{str}`.
 
@@ -245,19 +249,19 @@ NOTE: d1, ds2, ds3, ds4 are the names of `ReadableDataSource`, and can be coded 
 
 Every data source has 3 common configuration items: `data-type`, `converter-class` and `rule-type`.
 
-`data-type` refers to `Converter`. Spring Cloud Alibaba Sentinel provides two embedded values by default: `json` and `xml` (the default is json if not specified). If you do not want to use the embedded `json` or `xml` `Converter`, you can also fill in `custom` to indicate that you will define your own `Converter`, and then configure the `converter-class`. You need to specify the full path of the class for this configuration.
+`data-type` refers to `Converter`. Spring Cloud Alibaba Sentinel provides two embedded values by default: `json` and `xml` (the default is JSON if not specified). If you do not want to use the embedded `json` or `xml` `Converter`, you can also fill in `custom` to indicate that you will define your own `Converter`, and then configure the `converter-class`. You need to specify the full path of the class for this configuration.
 
 `rule-type` refers to the rule type in datasource(`flow`，`degrade`，`authority`，`system`, `param-flow`, `gw-flow`, `gw-api-group`).
 
 NOTE: XML format is not supported by default. To make it effective, you need to add the  `jackson-dataformat-xml` dependency.
 
-To learn more about how dynamic data sources work in Sentinel, refer to https://github.com/alibaba/Sentinel/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95[Dynamic Rule Extension].
+To learn more about how dynamic data sources work in Sentinel, refer to https://github.com/alibaba/Sentinel/wiki/Dynamic-Rule-Configuration[Dynamic Rule Extension].
 
 ### Support Zuul
 
-https://github.com/alibaba/Sentinel/wiki/%E7%BD%91%E5%85%B3%E9%99%90%E6%B5%81[参考 Sentinel 网关限流]
+https://github.com/alibaba/Sentinel/wiki/API-Gateway-Flow-Control[Sentinel API gateway flow control document]
 
-If you want to use Sentinel Starter with Zuul, you need to add the `spring-cloud-alibaba-sentinel-gateway` dependency, and you need to add the `spring-cloud-starter-netflix-zuul` dependency to let Zuul AutoConfiguration class in the gateway module takes effect:
+If you want to use Sentinel Starter with Zuul 1.x, you need to add the `spring-cloud-alibaba-sentinel-gateway` dependency, and you need to add the `spring-cloud-starter-netflix-zuul` dependency to let Zuul AutoConfiguration class in the gateway module takes effect:
 
 ```xml
 <dependency>
@@ -278,7 +282,7 @@ If you want to use Sentinel Starter with Zuul, you need to add the `spring-cloud
 
 ### Support Spring Cloud Gateway
 
-https://github.com/alibaba/Sentinel/wiki/%E7%BD%91%E5%85%B3%E9%99%90%E6%B5%81[参考 Sentinel 网关限流]
+https://github.com/alibaba/Sentinel/wiki/API-Gateway-Flow-Control[Sentinel API gateway flow control document]
 
 If you want to use Sentinel Starter with Spring Cloud Gateway, you need to add the `spring-cloud-alibaba-sentinel-gateway` dependency and add the `spring-cloud-starter-gateway` dependency to let Spring Cloud Gateway AutoConfiguration class in the module takes effect:
 
@@ -437,7 +441,7 @@ The following table shows all the configurations of Spring Cloud Alibaba Sentine
 |`spring.cloud.sentinel.log.dir`|Directory of Sentinel log files|
 |`spring.cloud.sentinel.log.switch-pid`|If PID is required for Sentinel log file names|false
 |`spring.cloud.sentinel.servlet.blockPage`| Customized redirection URL. When rate limited, the request will be redirected to the pre-defined URL |
-|`spring.cloud.sentinel.flow.coldFactor`| https://github.com/alibaba/Sentinel/wiki/%E9%99%90%E6%B5%81---%E5%86%B7%E5%90%AF%E5%8A%A8[ColdFactor] |3
+|`spring.cloud.sentinel.flow.coldFactor`| The cold factor of the warm-up mode |3
 |`spring.cloud.sentinel.zuul.order.pre`| The order of SentinelZuulPreFilter | 10000
 |`spring.cloud.sentinel.zuul.order.post`| The order of SentinelZuulPostFilter | 1000
 |`spring.cloud.sentinel.zuul.order.error`| The order of SentinelZuulErrorFilter | -1
