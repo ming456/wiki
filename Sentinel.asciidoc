@@ -32,26 +32,35 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(ServiceApplication.class, args);
     }
+}
 
+@Service
+public class TestService {
+
+    @SentinelResource(value = "sayHello")
+    public String sayHello(String name) {
+        return "Hello, " + name;
+    }
 }
 
 @RestController
 public class TestController {
 
-    @GetMapping(value = "/hello")
-    @SentinelResource("hello")
-    public String hello() {
-        return "Hello Sentinel";
-    }
+    @Autowired
+    private TestService service;
 
+    @GetMapping(value = "/hello/{name}")
+    public String apiHello(@PathVariable String name) {
+        return service.sayHello(name);
+    }
 }
 ```
 
-`@SentinelResource` 注解用来标识资源是否被限流、降级。上述例子上该注解的属性 `hello` 表示资源名。
+`@SentinelResource` 注解用来标识资源是否被限流、降级。上述例子上该注解的属性 `sayHello` 表示资源名。
 
-`@SentinelResource` 还提供了其它额外的属性如 `blockHandler`，`blockHandlerClass`，`fallback` 用于表示限流或降级的操作（注意有方法签名要求），更多内容可以参考 https://github.com/alibaba/Sentinel/wiki/%E6%B3%A8%E8%A7%A3%E6%94%AF%E6%8C%81[Sentinel 注解支持文档]。
+`@SentinelResource` 还提供了其它额外的属性如 `blockHandler`，`blockHandlerClass`，`fallback` 用于表示限流或降级的操作（注意有方法签名要求），更多内容可以参考 https://github.com/alibaba/Sentinel/wiki/%E6%B3%A8%E8%A7%A3%E6%94%AF%E6%8C%81[Sentinel 注解支持文档]。若不配置 `blockHandler`、`fallback` 等函数，则被流控降级时方法会直接抛出对应的 BlockException；若方法未定义 `throws BlockException` 则会被 JVM 包装一层 `UndeclaredThrowableException`。
 
-> 注：一般推荐将 `@SentinelResource` 注解加到服务上，而在 Web 层直接使用 Spring Cloud Alibaba 自带的 Web 适配埋点。Sentinel Web 适配支持配置自定义流控处理逻辑，参考 https://github.com/alibaba/Sentinel/wiki/主流框架的适配#web-适配[相关文档]。
+> 注：一般推荐将 `@SentinelResource` 注解加到服务实现上，而在 Web 层直接使用 Spring Cloud Alibaba 自带的 Web 埋点适配。Sentinel Web 适配同样支持配置自定义流控处理逻辑，参考 https://github.com/alibaba/Sentinel/wiki/主流框架的适配#web-适配[相关文档]。
 
 以上例子都是在 Web Servlet 环境下使用的。Sentinel 目前已经支持 Spring WebFlux，需要配合 `spring-boot-starter-webflux` 依赖触发 sentinel-starter 中 WebFlux 相关的自动化配置。
 
@@ -120,16 +129,16 @@ spring:
         dashboard: localhost:8080
 ----
 
-这里的 `spring.cloud.sentinel.transport.port` 端口配置会在应用对应的机器上启动一个 Http Server，该 Server 会与 Sentinel 控制台做交互。比如 Sentinel 控制台添加了1个限流规则，会把规则数据 push 给这个 Http Server 接收，Http Server 再将规则注册到 Sentinel 中。
+这里的 `spring.cloud.sentinel.transport.port` 端口配置会在应用对应的机器上启动一个 Http Server，该 Server 会与 Sentinel 控制台做交互。比如 Sentinel 控制台添加了一个限流规则，会把规则数据 push 给这个 Http Server 接收，Http Server 再将规则注册到 Sentinel 中。
 
-更多 Sentinel 控制台的使用及问题参考： https://github.com/alibaba/Sentinel/wiki/%E6%8E%A7%E5%88%B6%E5%8F%B0[Sentinel控制台]
+更多 Sentinel 控制台的使用及问题参考： https://github.com/alibaba/Sentinel/wiki/%E6%8E%A7%E5%88%B6%E5%8F%B0[Sentinel 控制台文档] 以及 https://github.com/alibaba/Sentinel/wiki/FAQ[Sentinel FAQ]
 
 ### Feign 支持
 
 Sentinel 适配了 https://github.com/OpenFeign/feign[Feign] 组件。如果想使用，除了引入 `spring-cloud-starter-alibaba-sentinel` 的依赖外还需要 2 个步骤：
 
 * 配置文件打开 Sentinel 对 Feign 的支持：`feign.sentinel.enabled=true`
-* 加入 `openfeign starter` 依赖使 `sentinel starter` 中的自动化配置类生效：
+* 加入 `spring-cloud-starter-openfeign` 依赖使 Sentinel starter 中的自动化配置类生效：
 
 ```xml
 <dependency>
