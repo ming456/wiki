@@ -32,26 +32,35 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(ServiceApplication.class, args);
     }
+}
 
+@Service
+public class TestService {
+
+    @SentinelResource(value = "sayHello")
+    public String sayHello(String name) {
+        return "Hello, " + name;
+    }
 }
 
 @RestController
 public class TestController {
 
-    @GetMapping(value = "/hello")
-    @SentinelResource("hello")
-    public String hello() {
-        return "Hello Sentinel";
-    }
+    @Autowired
+    private TestService service;
 
+    @GetMapping(value = "/hello/{name}")
+    public String apiHello(@PathVariable String name) {
+        return service.sayHello(name);
+    }
 }
 ```
 
-The @SentinelResource annotation is used to identify if a resource is rate limited or degraded. In the above sample, the 'hello' attribute of the annotation refers to the resource name.
+The `@SentinelResource` annotation is used to wrap your logic as the guarded resource of Sentinel. In the above sample, the `sayHello` attribute of the annotation refers to the resource name.
 
-@SentinelResource also provides attributes such as `blockHandler`, `blockHandlerClass`,  and `fallback` to identify the handler logic of flow control. For more details, refer to https://github.com/alibaba/Sentinel/tree/master/sentinel-extension/sentinel-annotation-aspectj[Sentinel Annotation Support].
+`@SentinelResource` also provides attributes such as `blockHandler`, `blockHandlerClass`,  and `fallback` to identify the handler logic of flow control. For more details, refer to https://github.com/alibaba/Sentinel/tree/master/sentinel-extension/sentinel-annotation-aspectj[the document of Sentinel Annotation Support].
 
-The above examples are all used in the WebServlet environment. Sentinel currently supports WebFlux and needs to cooperate with the `spring-boot-starter-webflux` dependency to trigger the WebFlux-related automation configuration in sentinel starter.
+The above examples are all used in the Web Servlet environment. Sentinel currently supports Spring WebFlux and needs to cooperate with the `spring-boot-starter-webflux` dependency to trigger the WebFlux-related automation configuration in Sentinel starter.
 
 ```java
 @SpringBootApplication
@@ -67,10 +76,8 @@ public class Application {
 public class TestController {
 
     @GetMapping("/mono")
-    @SentinelResource("hello")
     public Mono<String> mono() {
-	return Mono.just("simple string")
-			.transform(new SentinelReactorTransformer<>("otherResourceName"));
+	return Mono.just("simple string");
     }
 
 }
@@ -78,7 +85,7 @@ public class TestController {
 
 ##### Sentinel Dashboard
 
-Sentinel provides a simple stand-alone https://github.com/alibaba/Sentinel/wiki/Dashboard[dashboard], on which you can monitor your applications, and configure the rules in real-time. It includes the following features:
+Sentinel provides a simple stand-alone https://github.com/alibaba/Sentinel/wiki/Dashboard[dashboard], on which you can monitor your services, and configure the rules in real-time. It includes the following features:
 
 * Machine discovery
 * Real-time monitoring for a single machine or clusters with less than 500 nodes
@@ -108,7 +115,7 @@ Sentinel dashboard is a standard Spring Boot application, and you can run the JA
 java -Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard.jar
 ```
 
-If there is conflict with the 8080 port, you can use `-Dserver.port=new port` to define a new port.
+If there are conflicts with the 8080 port, you can use `-Dserver.port=new port` to define a new port.
 
 #### Configure the Dashboard
 
@@ -122,7 +129,7 @@ spring:
         dashboard: localhost:8080
 ----
 
-The port number specified in `spring.cloud.sentinel.transport.port` will start an HTTP Server on the corresponding server of the application, and this server will interact with the Sentinel dashboard. For example, if a rate limiting rule is added in the Sentinel dashboard, the rule data will be pushed to and received by the HTTP Server, which in turn registers the rule to Sentinel.
+The port number specified in `spring.cloud.sentinel.transport.port` will start an HTTP Server on the corresponding server of the application, and this server will interact with the Sentinel dashboard. For example, if a flow rule is added in the Sentinel dashboard, the rule data will be pushed to and received by the HTTP Server, which in turn registers the rule to Sentinel.
 
 For more information about Sentinel dashboard, please refer to https://github.com/alibaba/Sentinel/wiki/Dashboard[Sentinel Dashboard].
 
