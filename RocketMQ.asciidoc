@@ -335,7 +335,7 @@ retryNextServer::
 
 使用阿里云 MQ 服务需要配置 AccessKey、SecretKey 以及云上的 NameServer 地址。
 
-NOTE: 0.1.2 & 0.2.2 & 0.9.0 才支持该功能
+NOTE: 0.1.2 & 0.2.2 & 0.9.0 及以上才支持该功能
 
 ```properties
 spring.cloud.stream.rocketmq.binder.access-key=YourAccessKey
