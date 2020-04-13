@@ -16,7 +16,7 @@
 [width="60%",options="header"]
 |====
 ^|Spring Cloud Version ^|Spring Cloud Alibaba Version ^|Spring Boot Version
-|Spring Cloud Hoxton.SR3|2.2.1.RELEASE|2.2.X.RELEASE
+|Spring Cloud Hoxton.SR3|2.2.1.RELEASE|2.2.5.RELEASE
 |Spring Cloud Hoxton.RELEASE|2.2.0.RELEASE|2.2.X.RELEASE
 |Spring Cloud Greenwich|2.1.1.RELEASE|2.1.X.RELEASE
 |Spring Cloud Finchley|2.0.1.RELEASE|2.0.X.RELEASE
