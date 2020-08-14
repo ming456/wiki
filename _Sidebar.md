@@ -11,9 +11,9 @@
 	- 商业化组件
 	   - ANS(不推荐使用，使用 Nacos 代替）
 	   - ACM(不推荐使用，使用 Nacos 代替）
-	   - [OSS](https://github.com/alibaba/spring-cloud-alibaba/wiki/OSS)
-	   - [SchedulerX](https://github.com/alibaba/spring-cloud-alibaba/wiki/SchedulerX)
-	   - [SMS](https://github.com/alibaba/spring-cloud-alibaba/wiki/SMS)   
+	   - [OSS](https://github.com/alibaba/aliyun-spring-boot)
+	   - [SchedulerX](https://github.com/alibaba/aliyun-spring-boot)
+	   - [SMS](https://github.com/alibaba/aliyun-spring-boot)   
 - Documents
 	- Open Source components
 	   - [Nacos Config](https://github.com/alibaba/spring-cloud-alibaba/wiki/Nacos-config-en)
@@ -22,17 +22,15 @@
 	   - [RocketMQ](https://github.com/alibaba/spring-cloud-alibaba/wiki/RocketMQ-en)
 	   - [Dubbo Spring Cloud](https://github.com/alibaba/spring-cloud-alibaba/wiki/Dubbo-Spring-Cloud-en)
 	- Commercial components
-	   - [ANS](https://github.com/alibaba/spring-cloud-alibaba/wiki/ANS-en)
-	   - [ACM](https://github.com/alibaba/spring-cloud-alibaba/wiki/ACM-en)
-	   - [OSS](https://github.com/alibaba/spring-cloud-alibaba/wiki/OSS-en)
-	   - [SchedulerX](https://github.com/alibaba/spring-cloud-alibaba/wiki/SchedulerX-en)
-	   - [SMS](https://github.com/alibaba/spring-cloud-alibaba/wiki/SMS-en)  
+	   - [OSS](https://github.com/alibaba/aliyun-spring-boot)
+	   - [SchedulerX](https://github.com/alibaba/aliyun-spring-boot)
+	   - [SMS](https://github.com/alibaba/aliyun-spring-boot)  
 - Example
 	- [Sentinel](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/sentinel-example/sentinel-core-example/readme-zh.md)
 	- [Nacos Config](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/nacos-example/nacos-config-example/readme-zh.md)
 	- [Nacos Discovery](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/nacos-example/nacos-discovery-example/readme-zh.md)
 	- [RocketMQ](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/rocketmq-example/readme-zh.md)
     - [Dubbo Spring Cloud](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/spring-cloud-alibaba-dubbo-examples/README_CN.md)
-	- [OSS](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/oss-example/readme-zh.md)
-	- [SMS](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/sms-example/readme-zh.md)
+	- [OSS](https://github.com/alibaba/aliyun-spring-boot/tree/master/aliyun-spring-boot-samples/aliyun-oss-spring-boot-sample)
+	- [SMS](https://github.com/alibaba/aliyun-spring-boot/tree/master/aliyun-spring-boot-samples/aliyun-sms-spring-boot-sample)
 - [awesome spring cloud alibaba](https://github.com/alibaba/spring-cloud-alibaba/wiki/awesome-spring-cloud-alibaba)
