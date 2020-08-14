@@ -17,16 +17,14 @@ Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。�
    - [Dubbo Spring Cloud](https://github.com/alibaba/spring-cloud-alibaba/wiki/Dubbo-Spring-Cloud)
 
 - 商业化组件
-   - [ANS](https://github.com/alibaba/spring-cloud-alibaba/wiki/ANS)
-   - [ACM](https://github.com/alibaba/spring-cloud-alibaba/wiki/ACM)
-   - [OSS](https://github.com/alibaba/spring-cloud-alibaba/wiki/OSS)
-   - [SchedulerX](https://github.com/alibaba/spring-cloud-alibaba/wiki/SchedulerX)
-   - [SMS](https://github.com/alibaba/spring-cloud-alibaba/wiki/SMS)
+   - [OSS](https://github.com/alibaba/aliyun-spring-boot)
+   - [SchedulerX](https://github.com/alibaba/aliyun-spring-boot)
+   - [SMS](https://github.com/alibaba/aliyun-spring-boot)
 - Example
    - [Sentinel](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/sentinel-example/sentinel-core-example/readme-zh.md)
    - [Nacos Config](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/nacos-example/nacos-config-example/readme-zh.md)
    - [Nacos Discovery](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/nacos-example/nacos-discovery-example/readme-zh.md)
    - [RocketMQ](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/rocketmq-example/readme-zh.md)
-   - [OSS](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/oss-example/readme-zh.md)
-   - [SMS](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/sms-example/readme-zh.md)
+   - [OSS](https://github.com/alibaba/aliyun-spring-boot/tree/master/aliyun-spring-boot-samples/aliyun-oss-spring-boot-sample)
+   - [SMS](https://github.com/alibaba/aliyun-spring-boot/tree/master/aliyun-spring-boot-samples/aliyun-sms-spring-boot-sample)
    - [Dubbo Spring Cloud](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/spring-cloud-alibaba-dubbo-examples/README_CN.md)
