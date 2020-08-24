@@ -54,7 +54,7 @@ public class ProviderApplication {
 }
 ----
 
-在运行此 Example 之前， 必须使用 bootstrap.properties 配置文件来配置Nacos Server 地址，例如：
+在运行此 Example 之前， **必须使用 bootstrap.properties 配置文件来配置Nacos Server 地址**，例如：
 
 .bootstrap.properties
 [source,properties]
