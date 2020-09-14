@@ -4,6 +4,7 @@
 [width="60%",options="header"]
 |====
 ^|Spring Cloud Alibaba Version ^|Sentinel Version ^|Nacos Version ^| RocketMQ Version ^| Dubbo Version ^| Seata Version
+| 2.2.2.RELEASE |1.8.0|1.3.2|4.4.0|2.7.8| 1.3.0
 | 2.2.1.RELEASE or 2.1.2.RELEASE or 2.0.2.RELEASE |1.7.1|1.2.1|4.4.0|2.7.6| 1.2.0
 | 2.2.0.RELEASE |1.7.1|1.1.4|4.4.0|2.7.4.1| 1.0.0
 | 2.1.1.RELEASE or 2.0.1.RELEASE or 1.5.1.RELEASE |1.7.0|1.1.4|4.4.0|2.7.3| 0.9.0
@@ -16,6 +17,7 @@
 [width="60%",options="header"]
 |====
 ^|Spring Cloud Version ^|Spring Cloud Alibaba Version ^|Spring Boot Version
+|Spring Cloud Hoxton.SR8|2.2.2.RELEASE|2.3.2.RELEASE
 |Spring Cloud Hoxton.SR3|2.2.1.RELEASE|2.2.5.RELEASE
 |Spring Cloud Hoxton.RELEASE|2.2.0.RELEASE|2.2.X.RELEASE
 |Spring Cloud Greenwich|2.1.2.RELEASE|2.1.X.RELEASE
