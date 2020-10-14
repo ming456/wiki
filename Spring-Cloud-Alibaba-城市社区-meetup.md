@@ -13,7 +13,7 @@
 | 2021年6月19日 | 西安 |[立即报名](http://alibabacloud.mikecrm.com/vgf3zWH)|暂未开放 |暂未开放 |
 | 2021年7月17日 | 厦门 |[立即报名](http://alibabacloud.mikecrm.com/vgf3zWH)|暂未开放 |暂未开放 |
 
-* 备注：活动具体日期和城市可能会因为讲师时间等不可控因素有细微调整，最新meetup安排请关注[Spring Cloud Alibaba README文档](https://github.com/alibaba/spring-cloud-alibaba/blob/master/README-zh.md)
+* 备注：活动具体日期和城市可能会因为讲师时间等不可控因素有细微调整，最新meetup安排请关注[Spring Cloud Alibaba README文档](https://github.com/alibaba/spring-cloud-alibaba/wiki/Spring-Cloud-Alibaba-%E5%9F%8E%E5%B8%82%E7%A4%BE%E5%8C%BA-meetup)
 
 # Spring Cloud Alibaba 城市社区简介
 
