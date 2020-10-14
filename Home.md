@@ -28,3 +28,5 @@ Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。�
    - [OSS](https://github.com/alibaba/aliyun-spring-boot/tree/master/aliyun-spring-boot-samples/aliyun-oss-spring-boot-sample)
    - [SMS](https://github.com/alibaba/aliyun-spring-boot/tree/master/aliyun-spring-boot-samples/aliyun-sms-spring-boot-sample)
    - [Dubbo Spring Cloud](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/spring-cloud-alibaba-dubbo-examples/README_CN.md)
+
+- [Spring Cloud Alibaba 城市社区meetup](https://github.com/alibaba/spring-cloud-alibaba/wiki/Spring-Cloud-Alibaba-%E5%9F%8E%E5%B8%82%E7%A4%BE%E5%8C%BA-meetup)
