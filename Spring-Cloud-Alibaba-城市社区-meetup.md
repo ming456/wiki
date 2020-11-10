@@ -2,9 +2,9 @@
 
 |时间 | 城市 | 讲师议题报名入口 | 观众活动报名入口 |PPT下载 |
 | -----| ---- | ----| ----|----|
-| 2020年12月4日 | 北京 |[立即报名](http://alibabacloud.mikecrm.com/vgf3zWH)|暂未开放 |暂未开放 |
-| 2020年12月26日 | 广州 |[立即报名](http://alibabacloud.mikecrm.com/vgf3zWH)|暂未开放 |暂未开放 |
-| 2021年1月16 | 杭州 |[立即报名](http://alibabacloud.mikecrm.com/vgf3zWH)|暂未开放 |暂未开放 |
+| 2020年12月5 | 杭州 |[立即报名](http://alibabacloud.mikecrm.com/vgf3zWH)|暂未开放 |暂未开放 |
+| 2020年1月9日 | 北京 |[立即报名](http://alibabacloud.mikecrm.com/vgf3zWH)|暂未开放 |暂未开放 |
+| 2021年1月9日 | 广州 |[立即报名](http://alibabacloud.mikecrm.com/vgf3zWH)|暂未开放 |暂未开放 |
 | 2021年1月30 | 武汉 |[立即报名](http://alibabacloud.mikecrm.com/vgf3zWH)|暂未开放 |暂未开放 |
 | 2021年3月6日| 上海 |[立即报名](http://alibabacloud.mikecrm.com/vgf3zWH)|暂未开放 |暂未开放 |
 | 2021年3月20日 | 深圳 |[立即报名](http://alibabacloud.mikecrm.com/vgf3zWH)|暂未开放 |暂未开放 |
