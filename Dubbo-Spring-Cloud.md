@@ -6,6 +6,8 @@ Dubbo Spring Cloud 基于 Dubbo Spring Boot 2.7.1[1] 和 Spring Cloud 2.x 开发
 Dubbo Spring Cloud 首个 Preview Release，随同 Spring Cloud Alibaba `0.2.2.RELEASE` 和  `0.9.0.RELEASE` 一同发布[2]，
 分别对应 Spring Cloud Finchley[3] 与 Greenwich[4] (下文分别简称为 “F” 版 和 “G” 版) 。
 
+目前 Dubbo Spring Cloud 仍处于 preview 阶段，请等待成熟后再应用于生产环境。
+
 
 
 
