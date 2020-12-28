@@ -2,7 +2,7 @@
 | 时间 | 城市 | 讲师议题报名入口 | 观众活动报名入口 | PPT下载 |
 | --- | --- | --- | --- | --- |
 | 2020年12月5 | 杭州 | [已结束，议程回顾](https://www.huodongxing.com/event/3571620702811) | [已结束，视频回看](https://developer.aliyun.com/live/245701) | 进钉群：34930571获取 |
-| 2020年1月9日 | 上海 | [立即报名](http://alibabacloud.mikecrm.com/vgf3zWH) | 暂未开放 | 暂未开放 |
+| 2020年1月9日 | 上海 | [立即报名](http://alibabacloud.mikecrm.com/vgf3zWH) | [立即报名](https://www.huodongxing.com/event/2576519081911)| 暂未开放 |
 | 2021年1月16日 | 广州 | [立即报名](http://alibabacloud.mikecrm.com/vgf3zWH) | 暂未开放 | 暂未开放 |
 | 2021年1月30 | 武汉 | [立即报名](http://alibabacloud.mikecrm.com/vgf3zWH) | 暂未开放 | 暂未开放 |
 | 2021年3月6日 | 北京 | [立即报名](http://alibabacloud.mikecrm.com/vgf3zWH) | 暂未开放 | 暂未开放 |
