@@ -10,8 +10,6 @@
 	   - [RocketMQ](https://github.com/alibaba/spring-cloud-alibaba/wiki/RocketMQ)
 	   - [Dubbo Spring Cloud](https://github.com/alibaba/spring-cloud-alibaba/wiki/Dubbo-Spring-Cloud)
 	- 商业化组件
-	   - ANS(不推荐使用，使用 Nacos 代替）
-	   - ACM(不推荐使用，使用 Nacos 代替）
 	   - [OSS](https://github.com/alibaba/aliyun-spring-boot)
 	   - [SchedulerX](https://github.com/alibaba/aliyun-spring-boot)
 	   - [SMS](https://github.com/alibaba/aliyun-spring-boot)   
