@@ -1,3 +1,4 @@
+- [深入理解 Spring Cloud 与实战 by「阿里巴巴-洛夜」 ](https://item.jd.com/13043028.html)
 - [Spring Cloud Alibaba基础教程：Nacos的数据持久化 by「程序员DD」 ](http://blog.didispace.com/spring-cloud-alibaba-4/)
 - [Spring Cloud Alibaba基础教程：Nacos配置的多文件加载与共享配置 by「程序员DD」 ](http://blog.didispace.com/spring-cloud-alibaba-nacos-config-3/)
 - [Spring Cloud Alibaba基础教程：Nacos配置的多环境管理 by「程序员DD」 ](http://blog.didispace.com/spring-cloud-alibaba-nacos-config-2/)
