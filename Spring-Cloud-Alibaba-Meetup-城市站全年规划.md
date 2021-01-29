@@ -2,7 +2,7 @@
 | 时间 | 城市 | 讲师议题报名入口 | 观众活动报名入口 | PPT下载 |
 | --- | --- | --- | --- | --- |
 | 2020年12月5 | 杭州 | [已结束，议程回顾](https://www.huodongxing.com/event/3571620702811) | [已结束，视频回看](https://developer.aliyun.com/live/245701) | 进钉群：34930571获取 |
-| 2020年1月9日 | 上海 | [立即报名](http://alibabacloud.mikecrm.com/vgf3zWH) | [立即报名](https://www.huodongxing.com/event/2576519081911)| 暂未开放 |
+| 2021年1月9日 | 上海 | [立即报名](http://alibabacloud.mikecrm.com/vgf3zWH) | [立即报名](https://www.huodongxing.com/event/2576519081911)| 暂未开放 |
 | 2021年1月16日 | 广州 | [立即报名](http://alibabacloud.mikecrm.com/vgf3zWH) | 暂未开放 | 暂未开放 |
 | 2021年1月30 | 武汉 | [立即报名](http://alibabacloud.mikecrm.com/vgf3zWH) | 暂未开放 | 暂未开放 |
 | 2021年3月6日 | 北京 | [立即报名](http://alibabacloud.mikecrm.com/vgf3zWH) | 暂未开放 | 暂未开放 |
@@ -46,11 +46,11 @@ Spring Cloud Alibaba 城市社区的重要使命是推进 Spring Cloud Alibaba �
 # 城市社区的主要活动形式
 
 
-1. 线下 Meetup
-下线 Meetup 活动由城市社区主办也可以由城市社区和会员单位联合主办。Meetup 主要是分享 Spring Cloud Alibaba 的应用案例、使用经验、社区最新的技术进展，每个季度至少一次。
-1. 年度 SCA 开发者大会
+1. 线下 Meetup<br>
+线下 Meetup 活动由城市社区主办也可以由城市社区和会员单位联合主办。Meetup 主要是分享 Spring Cloud Alibaba 的应用案例、使用经验、社区最新的技术进展，每个季度至少一次。
+2. 年度 SCA 开发者大会<br>
 SCA 年度开发者大会将有阿里云联合全国城市社区联合主办，将由Spring Cloud&Spring Cloud Alibaba 创始团队分享技术 roadmap，并邀请各城市站核心贡献者和用户分享应用案例、使用经验。
-1. 线上技术文章发布
+3. 线上技术文章发布<br>
 内容包括但不限于101入门系列文章、技术解析、最佳实践、用户案例、源码解读等。每个月不少于一篇。
 
 
